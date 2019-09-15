@@ -100,4 +100,8 @@
                         </if>
         </trim>
     </update>
+
+    <delete id="deleteEvaluateById" parameterType="int">
+        delete from evaluate where id= #{id}
+    </delete>
 </mapper>

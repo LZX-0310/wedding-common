@@ -17,7 +17,7 @@ public interface EvaluateMapper {
 	public Integer insertEvaluate(Evaluate evaluate)throws Exception;
 
 	public Integer updateEvaluate(Evaluate evaluate)throws Exception;
-
+    //恶意评价删除
 	public Integer deleteEvaluateById(@Param(value = "id") Integer id)throws Exception;
 
 	public Integer batchDeleteEvaluate(Map<String,List<String>> params);
