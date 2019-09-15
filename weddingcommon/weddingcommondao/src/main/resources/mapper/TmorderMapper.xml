@@ -5,7 +5,7 @@
 <mapper namespace="com.zb.mapper.TmorderMapper">
 
     <select id="getTmorderById" resultType="com.zb.pojo.Tmorder">
-        select * from tmorder where orderid=#{orderid}
+        select * from tmorder where orderid= #{orderid}
     </select>
 
     <select id="getTmorderListByMap" resultType="com.zb.pojo.Tmorder" parameterType="java.util.Map">
