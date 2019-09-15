@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.WarehouseMapper">
+
+    <select id="getWarehouseById" resultType="com.zb.pojo.Warehouse">
+        select
+                id as id,
+                commodityid as commodityid,
+                stock as stock,
+                price as price,
+                sale as sale
+        from warehouse
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getWarehouseListByMap" resultType="com.zb.pojo.Warehouse" parameterType="java.util.Map">
+        select
+                id as id,
+                commodityid as commodityid,
+                stock as stock,
+                price as price,
+                sale as sale
+        from warehouse
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="commodityid != null and commodityid!=''">
+                    and commodityid=#{commodityid}
+                </if>
+                <if test="stock != null and stock!=''">
+                    and stock=#{stock}
+                </if>
+                <if test="price != null and price!=''">
+                    and price=#{price}
+                </if>
+                <if test="sale != null and sale!=''">
+                    and sale=#{sale}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getWarehouseCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from warehouse
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="commodityid != null and commodityid!=''">
+                    and commodityid=#{commodityid}
+                </if>
+                <if test="stock != null and stock!=''">
+                    and stock=#{stock}
+                </if>
+                <if test="price != null and price!=''">
+                    and price=#{price}
+                </if>
+                <if test="sale != null and sale!=''">
+                    and sale=#{sale}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertWarehouse" parameterType="com.zb.pojo.Warehouse">
+        insert into warehouse(
+                        commodityid,
+                        stock,
+                        price,
+                        sale)
+        values(
+                     #{commodityid},
+                     #{stock},
+                     #{price},
+                    #{sale})
+    </insert>
+
+    <update id="updateWarehouse" parameterType="com.zb.pojo.Warehouse">
+        update warehouse
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="commodityid != null and commodityid!=''">
+                            commodityid=#{commodityid},
+                        </if>
+                        <if test="stock != null and stock!=''">
+                            stock=#{stock},
+                        </if>
+                        <if test="price != null and price!=''">
+                            price=#{price},
+                        </if>
+                        <if test="sale != null and sale!=''">
+                            sale=#{sale}
+                        </if>
+        </trim>
+    </update>
+</mapper>

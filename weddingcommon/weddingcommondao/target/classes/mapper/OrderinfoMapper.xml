@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.OrderinfoMapper">
+
+    <select id="getOrderinfoById" resultType="com.zb.pojo.Orderinfo">
+        select
+                id as id,
+                orderid as orderid,
+                address as address,
+                phone as phone,
+                userid as userid,
+                state as state,
+                datetime as datetime,
+                price as price,
+                remrks as remrks,
+                freight as freight
+        from orderinfo
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getOrderinfoListByMap" resultType="com.zb.pojo.Orderinfo" parameterType="java.util.Map">
+        select
+                id as id,
+                orderid as orderid,
+                address as address,
+                phone as phone,
+                userid as userid,
+                state as state,
+                datetime as datetime,
+                price as price,
+                remrks as remrks,
+                freight as freight
+        from orderinfo
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="userid != null and userid!=''">
+                    and userid=#{userid}
+                </if>
+                <if test="state != null and state!=''">
+                    and state=#{state}
+                </if>
+                <if test="datetime != null and datetime!=''">
+                    and datetime=#{datetime}
+                </if>
+                <if test="price != null and price!=''">
+                    and price=#{price}
+                </if>
+                <if test="remrks != null and remrks!=''">
+                    and remrks=#{remrks}
+                </if>
+                <if test="freight != null and freight!=''">
+                    and freight=#{freight}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getOrderinfoCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from orderinfo
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="userid != null and userid!=''">
+                    and userid=#{userid}
+                </if>
+                <if test="state != null and state!=''">
+                    and state=#{state}
+                </if>
+                <if test="datetime != null and datetime!=''">
+                    and datetime=#{datetime}
+                </if>
+                <if test="price != null and price!=''">
+                    and price=#{price}
+                </if>
+                <if test="remrks != null and remrks!=''">
+                    and remrks=#{remrks}
+                </if>
+                <if test="freight != null and freight!=''">
+                    and freight=#{freight}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertOrderinfo" parameterType="com.zb.pojo.Orderinfo">
+        insert into orderinfo(
+                        orderid,
+                        address,
+                        phone,
+                        userid,
+                        state,
+                        datetime,
+                        price,
+                        remrks,
+                        freight)
+        values(
+                     #{orderid},
+                     #{address},
+                     #{phone},
+                     #{userid},
+                     #{state},
+                     #{datetime},
+                     #{price},
+                     #{remrks},
+                    #{freight})
+    </insert>
+
+    <update id="updateOrderinfo" parameterType="com.zb.pojo.Orderinfo">
+        update orderinfo
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="orderid != null and orderid!=''">
+                            orderid=#{orderid},
+                        </if>
+                        <if test="address != null and address!=''">
+                            address=#{address},
+                        </if>
+                        <if test="phone != null and phone!=''">
+                            phone=#{phone},
+                        </if>
+                        <if test="userid != null and userid!=''">
+                            userid=#{userid},
+                        </if>
+                        <if test="state != null and state!=''">
+                            state=#{state},
+                        </if>
+                        <if test="datetime != null and datetime!=''">
+                            datetime=#{datetime},
+                        </if>
+                        <if test="price != null and price!=''">
+                            price=#{price},
+                        </if>
+                        <if test="remrks != null and remrks!=''">
+                            remrks=#{remrks},
+                        </if>
+                        <if test="freight != null and freight!=''">
+                            freight=#{freight}
+                        </if>
+        </trim>
+    </update>
+</mapper>

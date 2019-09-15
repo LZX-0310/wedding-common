@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.EvaluateMapper">
+
+    <select id="getEvaluateById" resultType="com.zb.pojo.Evaluate">
+        select
+                id as id,
+                content as content,
+                reply as reply,
+                orderid as orderid,
+                etime as etime
+        from evaluate
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getEvaluateListByMap" resultType="com.zb.pojo.Evaluate" parameterType="java.util.Map">
+        select
+                id as id,
+                content as content,
+                reply as reply,
+                orderid as orderid,
+                etime as etime
+        from evaluate
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="content != null and content!=''">
+                    and content=#{content}
+                </if>
+                <if test="reply != null and reply!=''">
+                    and reply=#{reply}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+                <if test="etime != null and etime!=''">
+                    and etime=#{etime}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getEvaluateCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from evaluate
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="content != null and content!=''">
+                    and content=#{content}
+                </if>
+                <if test="reply != null and reply!=''">
+                    and reply=#{reply}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+                <if test="etime != null and etime!=''">
+                    and etime=#{etime}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertEvaluate" parameterType="com.zb.pojo.Evaluate">
+        insert into evaluate(
+                        content,
+                        reply,
+                        orderid,
+                        etime)
+        values(
+                     #{content},
+                     #{reply},
+                     #{orderid},
+                    #{etime})
+    </insert>
+
+    <update id="updateEvaluate" parameterType="com.zb.pojo.Evaluate">
+        update evaluate
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="content != null and content!=''">
+                            content=#{content},
+                        </if>
+                        <if test="reply != null and reply!=''">
+                            reply=#{reply},
+                        </if>
+                        <if test="orderid != null and orderid!=''">
+                            orderid=#{orderid},
+                        </if>
+                        <if test="etime != null and etime!=''">
+                            etime=#{etime}
+                        </if>
+        </trim>
+    </update>
+</mapper>

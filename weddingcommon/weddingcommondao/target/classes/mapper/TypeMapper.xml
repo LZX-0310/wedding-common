@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.TypeMapper">
+
+    <select id="getTypeById" resultType="com.zb.pojo.Type">
+        select
+                id as id,
+                tname as tname
+        from type
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getTypeListByMap" resultType="com.zb.pojo.Type" >
+        select
+                *
+        from type
+
+    </select>
+
+    <select id="getTypeCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from type
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="tname != null and tname!=''">
+                    and tname=#{tname}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertType" parameterType="com.zb.pojo.Type">
+        insert into type(
+                        tname)
+        values(
+                    #{tname})
+    </insert>
+
+    <update id="updateType" parameterType="com.zb.pojo.Type">
+        update type
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="tname != null and tname!=''">
+                            tname=#{tname}
+                        </if>
+        </trim>
+    </update>
+</mapper>

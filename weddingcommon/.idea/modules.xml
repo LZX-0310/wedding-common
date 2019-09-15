@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/weddingcommondao/weddingcommondao.iml" filepath="$PROJECT_DIR$/weddingcommondao/weddingcommondao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weddingcommondto/weddingcommondto.iml" filepath="$PROJECT_DIR$/weddingcommondto/weddingcommondto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weddingcommonmodule/weddingcommonmodule.iml" filepath="$PROJECT_DIR$/weddingcommonmodule/weddingcommonmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weddingcommonservice/weddingcommonservice.iml" filepath="$PROJECT_DIR$/weddingcommonservice/weddingcommonservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weddingcommonutils/weddingcommonutils.iml" filepath="$PROJECT_DIR$/weddingcommonutils/weddingcommonutils.iml" />
+    </modules>
+  </component>
+</project>

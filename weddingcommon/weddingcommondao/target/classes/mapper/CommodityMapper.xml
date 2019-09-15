@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.CommodityMapper">
+
+    <select id="getCommodityById" resultType="com.zb.pojo.Commodity">
+        select
+                id as id,
+                cname as cname,
+                price as price,
+                describ as describ,
+                state as state,
+                title as title,
+                businessid as businessid,
+                zkprice as zkprice
+                from commodity
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getCommodityListByMap" resultType="com.zb.pojo.Commodity" >
+        select
+                id as id,
+                cname as cname,
+                price as price,
+                describ as describ,
+                state as state,
+                title as title,
+             businessid as businessid,
+               zkprice  as zkprice
+         from commodity
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="cname != null and cname!=''">
+                    and cname=#{cname}
+                </if>
+                <if test="price != null and price!=''">
+                    and price=#{price}
+                </if>
+                <if test="describ != null and describ!=''">
+                    and describ=#{describ}
+                </if>
+                <if test="state != null and state!=''">
+                    and state=#{state}
+                </if>
+                <if test="title != null and title!=''">
+                    and title=#{title}
+                </if>
+            <if test="businessid != null and businessid!=''">
+                and businessid=#{businessid}
+            </if>
+            <if test="zkprice != null and zkprice!=''">
+                and zkprice=#{zkprice}
+            </if>
+        </trim>
+        <if test="index != null and size != null ">
+            limit ${index},${size}
+        </if>
+    </select>
+
+    <select id="getCommodityCount" resultType="int"  >
+        select count(1) from commodity
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="cname != null and cname!=''">
+                    and cname=#{cname}
+                </if>
+                <if test="price != null and price!=''">
+                    and price=#{price}
+                </if>
+                <if test="describ != null and describ!=''">
+                    and describ=#{describ}
+                </if>
+                <if test="state != null and state!=''">
+                    and state=#{state}
+                </if>
+                <if test="title != null and title!=''">
+                    and title=#{title}
+                </if>
+            <if test="businessid != null and businessid!=''">
+                and businessid=#{businessid}
+            </if>
+            <if test="zkprice != null and zkprice!=''">
+                and zkprice=#{zkprice}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertCommodity" parameterType="com.zb.pojo.Commodity">
+        insert into commodity  values(
+                     null,
+                     #{cname},
+                     #{price},
+                     #{describ},
+                     #{state},
+                    #{title},
+                    #{businessid},
+                    #{zkprice})
+    </insert>
+
+    <update id="updateCommodity" parameterType="com.zb.pojo.Commodity">
+        update commodity
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="cname != null and cname!=''">
+                            cname=#{cname},
+                        </if>
+                        <if test="price != null and price!=''">
+                            price=#{price},
+                        </if>
+                        <if test="describ != null and describ!=''">
+                            describ=#{describ},
+                        </if>
+                        <if test="state != null and state!=''">
+                            state=#{state},
+                        </if>
+                        <if test="title != null and title!=''">
+                            title=#{title}
+                        </if>
+                       <if test="businessid != null and businessid!=''">
+                             businessid=#{businessid}
+                        </if>
+                       <if test="zkprice != null and zkprice!=''">
+                            zkprice=#{zkprice}
+                       </if>
+        </trim>
+    </update>
+</mapper>

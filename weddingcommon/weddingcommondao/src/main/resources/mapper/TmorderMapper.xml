@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.TmorderMapper">
+
+    <select id="getTmorderById" resultType="com.zb.pojo.Tmorder">
+        select * from tmorder where orderid=#{orderid}
+    </select>
+
+    <select id="getTmorderListByMap" resultType="com.zb.pojo.Tmorder" parameterType="java.util.Map">
+        select
+                id as id,
+                tmorderid as tmorderid,
+                num as num,
+                orderid as orderid,
+                state as state,
+                commodityid as commodityid,
+                model as model,
+                time as time
+        from tmorder
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="tmorderid != null and tmorderid!=''">
+                    and tmorderid=#{tmorderid}
+                </if>
+                <if test="num != null and num!=''">
+                    and num=#{num}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+                <if test="state != null and state!=''">
+                    and state=#{state}
+                </if>
+                <if test="commodityid != null and commodityid!=''">
+                    and commodityid=#{commodityid}
+                </if>
+                <if test="model != null and model!=''">
+                    and model=#{model}
+                </if>
+                <if test="time != null and time!=''">
+                    and time=#{time}
+                </if>
+        </trim>
+        <if test="index != null and size != null ">
+            limit ${index},${size}
+        </if>
+    </select>
+
+    <select id="getTmorderCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(1) from tmorder
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="tmorderid != null and tmorderid!=''">
+                    and tmorderid=#{tmorderid}
+                </if>
+                <if test="num != null and num!=''">
+                    and num=#{num}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+                <if test="state != null and state!=''">
+                    and state=#{state}
+                </if>
+                <if test="commodityid != null and commodityid!=''">
+                    and commodityid=#{commodityid}
+                </if>
+                <if test="model != null and model!=''">
+                    and model=#{model}
+                </if>
+                <if test="time != null and time!=''">
+                    and time=#{time}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertTmorder" parameterType="com.zb.pojo.Tmorder">
+        insert into tmorder(
+                        tmorderid,
+                        num,
+                        orderid,
+                        state,
+                        commodityid,
+                        model,
+                        time)
+        values(
+                     #{tmorderid},
+                     #{num},
+                     #{orderid},
+                     #{state},
+                     #{commodityid},
+                     #{model},
+                    #{time})
+    </insert>
+
+    <update id="updateTmorder" parameterType="com.zb.pojo.Tmorder">
+        update tmorder
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="tmorderid != null and tmorderid!=''">
+                            tmorderid=#{tmorderid},
+                        </if>
+                        <if test="num != null and num!=''">
+                            num=#{num},
+                        </if>
+                        <if test="orderid != null and orderid!=''">
+                            orderid=#{orderid},
+                        </if>
+                        <if test="state != null and state!=''">
+                            state=#{state},
+                        </if>
+                        <if test="commodityid != null and commodityid!=''">
+                            commodityid=#{commodityid},
+                        </if>
+                        <if test="model != null and model!=''">
+                            model=#{model},
+                        </if>
+                        <if test="time != null and time!=''">
+                            time=#{time}
+                        </if>
+        </trim>
+    </update>
+</mapper>

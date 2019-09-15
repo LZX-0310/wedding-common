@@ -1,0 +1,17 @@
+com\zb\mapper\MerchandiseMapper.class
+com\zb\mapper\TypeMapper.class
+com\zb\mapper\RefundMapper.class
+com\zb\mapper\ForumMapper.class
+com\zb\mapper\TmorderMapper.class
+com\zb\mapper\RepliesMapper.class
+com\zb\mapper\EvaluateMapper.class
+com\zb\mapper\XtypeMapper.class
+com\zb\mapper\OrderinfoMapper.class
+com\zb\mapper\DiscountMapper.class
+com\zb\mapper\UserMapper.class
+com\zb\mapper\BusinessMapper.class
+com\zb\mapper\ReservationMapper.class
+com\zb\mapper\WarehouseMapper.class
+com\zb\mapper\AddressMapper.class
+com\zb\mapper\CommodityMapper.class
+com\zb\mapper\LogisticsMapper.class

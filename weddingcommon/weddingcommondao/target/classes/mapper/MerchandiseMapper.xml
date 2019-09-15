@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.MerchandiseMapper">
+
+    <select id="getMerchandiseById" resultType="com.zb.pojo.Merchandise">
+        select
+                id as id,
+                businessid as businessid,
+                minprice as minprice,
+                maxprice as maxprice,
+                mname as mname,
+                title as title,
+                content as content
+        from merchandise
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getMerchandiseListByMap" resultType="com.zb.pojo.Merchandise" parameterType="java.util.Map">
+        select
+                id as id,
+                businessid as businessid,
+                minprice as minprice,
+                maxprice as maxprice,
+                mname as mname,
+                title as title,
+                content as content
+        from merchandise
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="businessid != null and businessid!=''">
+                    and businessid=#{businessid}
+                </if>
+                <if test="minprice != null and minprice!=''">
+                    and minprice=#{minprice}
+                </if>
+                <if test="maxprice != null and maxprice!=''">
+                    and maxprice=#{maxprice}
+                </if>
+                <if test="mname != null and mname!=''">
+                    and mname=#{mname}
+                </if>
+                <if test="title != null and title!=''">
+                    and title=#{title}
+                </if>
+                <if test="content != null and content!=''">
+                    and content=#{content}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getMerchandiseCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from merchandise
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="businessid != null and businessid!=''">
+                    and businessid=#{businessid}
+                </if>
+                <if test="minprice != null and minprice!=''">
+                    and minprice=#{minprice}
+                </if>
+                <if test="maxprice != null and maxprice!=''">
+                    and maxprice=#{maxprice}
+                </if>
+                <if test="mname != null and mname!=''">
+                    and mname=#{mname}
+                </if>
+                <if test="title != null and title!=''">
+                    and title=#{title}
+                </if>
+                <if test="content != null and content!=''">
+                    and content=#{content}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertMerchandise" parameterType="com.zb.pojo.Merchandise">
+        insert into merchandise(
+                        businessid,
+                        minprice,
+                        maxprice,
+                        mname,
+                        title,
+                        content)
+        values(
+                     #{businessid},
+                     #{minprice},
+                     #{maxprice},
+                     #{mname},
+                     #{title},
+                    #{content})
+    </insert>
+
+    <update id="updateMerchandise" parameterType="com.zb.pojo.Merchandise">
+        update merchandise
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="businessid != null and businessid!=''">
+                            businessid=#{businessid},
+                        </if>
+                        <if test="minprice != null and minprice!=''">
+                            minprice=#{minprice},
+                        </if>
+                        <if test="maxprice != null and maxprice!=''">
+                            maxprice=#{maxprice},
+                        </if>
+                        <if test="mname != null and mname!=''">
+                            mname=#{mname},
+                        </if>
+                        <if test="title != null and title!=''">
+                            title=#{title},
+                        </if>
+                        <if test="content != null and content!=''">
+                            content=#{content}
+                        </if>
+        </trim>
+    </update>
+</mapper>

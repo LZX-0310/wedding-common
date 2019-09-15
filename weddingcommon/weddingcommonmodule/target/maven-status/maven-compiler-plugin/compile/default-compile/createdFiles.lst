@@ -1,0 +1,17 @@
+com\zb\pojo\Address.class
+com\zb\pojo\Commodity.class
+com\zb\pojo\Merchandise.class
+com\zb\pojo\Reservation.class
+com\zb\pojo\Forum.class
+com\zb\pojo\Discount.class
+com\zb\pojo\Xtype.class
+com\zb\pojo\Orderinfo.class
+com\zb\pojo\Tmorder.class
+com\zb\pojo\Warehouse.class
+com\zb\pojo\Replies.class
+com\zb\pojo\Type.class
+com\zb\pojo\Refund.class
+com\zb\pojo\Logistics.class
+com\zb\pojo\Evaluate.class
+com\zb\pojo\User.class
+com\zb\pojo\Business.class

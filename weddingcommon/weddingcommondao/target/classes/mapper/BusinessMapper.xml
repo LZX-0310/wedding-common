@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.BusinessMapper">
+
+    <select id="getBusinessById" resultType="com.zb.pojo.Business">
+        select
+                id as id,
+                number as number,
+                password as password,
+                accout as accout,
+                fraction as fraction,
+                address as address,
+                state as state
+        from business
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getBusinessListByMap" resultType="com.zb.pojo.Business" parameterType="java.util.Map">
+        select
+                id as id,
+                number as number,
+                password as password,
+                accout as accout,
+                fraction as fraction,
+                address as address,
+                 state as state
+        from business
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="number != null and number!=''">
+                    and number=#{number}
+                </if>
+                <if test="password != null and password!=''">
+                    and password=#{password}
+                </if>
+                <if test="accout != null and accout!=''">
+                    and accout=#{accout}
+                </if>
+                <if test="fraction != null and fraction!=''">
+                    and fraction=#{fraction}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+            <if test="state != null and state!=''">
+                and state=#{state}
+            </if>
+        </trim>
+        <if test="index != null and size != null ">
+            limit ${index},${size}
+        </if>
+    </select>
+
+    <select id="getBusinessCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from business
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="number != null and number!=''">
+                    and number=#{number}
+                </if>
+                <if test="password != null and password!=''">
+                    and password=#{password}
+                </if>
+                <if test="accout != null and accout!=''">
+                    and accout=#{accout}
+                </if>
+                <if test="fraction != null and fraction!=''">
+                    and fraction=#{fraction}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+            <if test="state != null and state!=''">
+                and state=#{state}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertBusiness" parameterType="com.zb.pojo.Business">
+        insert into business(
+                          id,
+                        number,
+                        password,
+                        accout,
+                        fraction,
+                        address,
+                        state)
+        values(
+                       null ,
+                     #{number},
+                     #{password},
+                     #{accout},
+                     #{fraction},
+                    #{address},
+                     #{state})
+    </insert>
+
+    <update id="updateBusiness" parameterType="com.zb.pojo.Business">
+        update business
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="number != null and number!=''">
+                            number=#{number},
+                        </if>
+                        <if test="password != null and password!=''">
+                            password=#{password},
+                        </if>
+                        <if test="accout != null and accout!=''">
+                            accout=#{accout},
+                        </if>
+                        <if test="fraction != null and fraction!=''">
+                            fraction=#{fraction},
+                        </if>
+                        <if test="address != null and address!=''">
+                            address=#{address}
+                        </if>
+                      <if test="state != null and state!=''">
+                            state=#{state}
+                         </if>
+        </trim>
+    </update>
+</mapper>

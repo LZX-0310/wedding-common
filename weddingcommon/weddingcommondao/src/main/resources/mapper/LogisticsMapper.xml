@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.LogisticsMapper">
+
+    <select id="getLogisticsById" resultType="com.zb.pojo.Logistics">
+        select
+                id as id,
+                lname as lname,
+                logisticsId as logisticsId,
+                orderid as orderid
+        from logistics
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getLogisticsListByMap" resultType="com.zb.pojo.Logistics" parameterType="java.util.Map">
+        select
+                id as id,
+                lname as lname,
+                logisticsId as logisticsId,
+                orderid as orderid
+        from logistics
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="lname != null and lname!=''">
+                    and lname=#{lname}
+                </if>
+                <if test="logisticsId != null and logisticsId!=''">
+                    and logisticsId=#{logisticsId}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getLogisticsCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from logistics
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="lname != null and lname!=''">
+                    and lname=#{lname}
+                </if>
+                <if test="logisticsId != null and logisticsId!=''">
+                    and logisticsId=#{logisticsId}
+                </if>
+                <if test="orderid != null and orderid!=''">
+                    and orderid=#{orderid}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertLogistics" parameterType="com.zb.pojo.Logistics">
+        insert into logistics(
+                        lname,
+                        logisticsId,
+                        orderid)
+        values(
+                     #{lname},
+                     #{logisticsId},
+                    #{orderid})
+    </insert>
+
+    <update id="updateLogistics" parameterType="com.zb.pojo.Logistics">
+        update logistics
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="lname != null and lname!=''">
+                            lname=#{lname},
+                        </if>
+                        <if test="logisticsId != null and logisticsId!=''">
+                            logisticsId=#{logisticsId},
+                        </if>
+                        <if test="orderid != null and orderid!=''">
+                            orderid=#{orderid}
+                        </if>
+        </trim>
+    </update>
+</mapper>

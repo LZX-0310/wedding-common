@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.UserMapper">
+
+    <select id="getUserById" resultType="com.zb.pojo.User">
+        select
+                id as id,
+                uname as uname,
+                address as address,
+                integral as integral,
+                birthday as birthday,
+                phone as phone,
+                number as number,
+                password as password,
+                accout as accout,
+                sex as sex,
+                date as date
+        from user
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getUserListByMap" resultType="com.zb.pojo.User" parameterType="java.util.Map">
+        select
+                id as id,
+                uname as uname,
+                address as address,
+                integral as integral,
+                birthday as birthday,
+                phone as phone,
+                number as number,
+                password as password,
+                accout as accout,
+                sex as sex,
+                date as date
+        from user
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="uname != null and uname!=''">
+                    and uname=#{uname}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+                <if test="integral != null and integral!=''">
+                    and integral=#{integral}
+                </if>
+                <if test="birthday != null and birthday!=''">
+                    and birthday=#{birthday}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="number != null and number!=''">
+                    and number=#{number}
+                </if>
+                <if test="password != null and password!=''">
+                    and password=#{password}
+                </if>
+                <if test="accout != null and accout!=''">
+                    and accout=#{accout}
+                </if>
+                <if test="sex != null and sex!=''">
+                    and sex=#{sex}
+                </if>
+                <if test="date != null and date!=''">
+                    and date=#{date}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getUserCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from user
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="uname != null and uname!=''">
+                    and uname=#{uname}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+                <if test="integral != null and integral!=''">
+                    and integral=#{integral}
+                </if>
+                <if test="birthday != null and birthday!=''">
+                    and birthday=#{birthday}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="number != null and number!=''">
+                    and number=#{number}
+                </if>
+                <if test="password != null and password!=''">
+                    and password=#{password}
+                </if>
+                <if test="accout != null and accout!=''">
+                    and accout=#{accout}
+                </if>
+                <if test="sex != null and sex!=''">
+                    and sex=#{sex}
+                </if>
+                <if test="date != null and date!=''">
+                    and date=#{date}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertUser" parameterType="com.zb.pojo.User">
+        insert into user(
+                        id,
+                        uname,
+                        address,
+                        integral,
+                        birthday,
+                        phone,
+                        number,
+                        password,
+                        accout,
+                        sex,
+                        date)
+        values(
+                       null,
+                     #{uname},
+                     #{address},
+                     #{integral},
+                     #{birthday},
+                     #{phone},
+                     #{number},
+                     #{password},
+                     #{accout},
+                     #{sex},
+                    now())
+    </insert>
+
+    <update id="updateUser" parameterType="com.zb.pojo.User">
+        update user
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="uname != null and uname!=''">
+                            uname=#{uname},
+                        </if>
+                        <if test="address != null and address!=''">
+                            address=#{address},
+                        </if>
+                        <if test="integral != null and integral!=''">
+                            integral=#{integral},
+                        </if>
+                        <if test="birthday != null and birthday!=''">
+                            birthday=#{birthday},
+                        </if>
+                        <if test="phone != null and phone!=''">
+                            phone=#{phone},
+                        </if>
+                        <if test="number != null and number!=''">
+                            number=#{number},
+                        </if>
+                        <if test="password != null and password!=''">
+                            password=#{password},
+                        </if>
+                        <if test="accout != null and accout!=''">
+                            accout=#{accout},
+                        </if>
+                        <if test="sex != null and sex!=''">
+                            sex=#{sex},
+                        </if>
+                        <if test="date != null and date!=''">
+                            date=now()
+                        </if>
+        </trim>
+    </update>
+
+    <select id="loginUser" resultType="com.zb.pojo.User" parameterType="java.util.Map">
+        select*from `user` u where u.`phone`=#{uname} or u.`number`=#{uname}  and u.`password`=#{password}
+    </select>
+
+    <select id="getUserByPhone" resultType="com.zb.pojo.User">
+        select*from `user` u where u.`phone`=#{phone}
+    </select>
+</mapper>

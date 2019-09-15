@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.XtypeMapper">
+
+    <select id="getXtypeById" resultType="com.zb.pojo.Xtype">
+        select
+                id as id,
+                xname as xname,
+        typeid as typeid
+        from xtype
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+            <if test="typeidid != null">
+                and typeid=#{typeid}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getXtypeListByMap" resultType="com.zb.pojo.Xtype" >
+        select
+              *
+        from xtype
+
+        where typeid=#{id}
+
+    </select>
+
+    <select id="getXtypeCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from xtype
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="xname != null and xname!=''">
+                    and xname=#{xname}
+                </if>
+            <if test="typeidid != null">
+                and typeid=#{typeid}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertXtype" parameterType="com.zb.pojo.Xtype">
+        insert into xtype(
+                        xname,typeid)
+        values(
+                    #{xname},#{typeid})
+    </insert>
+
+    <update id="updateXtype" parameterType="com.zb.pojo.Xtype">
+        update xtype
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="xname != null and xname!=''">
+                            xname=#{xname}
+                        </if>
+           <if test="typeid != null '">
+            typeid=#{typeid}
+        </if>
+        </trim>
+    </update>
+</mapper>

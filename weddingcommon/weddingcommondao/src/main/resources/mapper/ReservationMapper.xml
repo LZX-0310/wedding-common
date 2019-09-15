@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.ReservationMapper">
+
+    <select id="getReservationById" resultType="com.zb.pojo.Reservation">
+        select
+                id as id,
+                merchandiseid as merchandiseid,
+                rname as rname,
+                rphone as rphone,
+                maketime as maketime,
+                ordertime as ordertime
+        from reservation
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getReservationListByMap" resultType="com.zb.pojo.Reservation" parameterType="java.util.Map">
+        select
+                id as id,
+                merchandiseid as merchandiseid,
+                rname as rname,
+                rphone as rphone,
+                maketime as maketime,
+                ordertime as ordertime
+        from reservation
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="merchandiseid != null and merchandiseid!=''">
+                    and merchandiseid=#{merchandiseid}
+                </if>
+                <if test="rname != null and rname!=''">
+                    and rname=#{rname}
+                </if>
+                <if test="rphone != null and rphone!=''">
+                    and rphone=#{rphone}
+                </if>
+                <if test="maketime != null and maketime!=''">
+                    and maketime=#{maketime}
+                </if>
+                <if test="ordertime != null and ordertime!=''">
+                    and ordertime=#{ordertime}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getReservationCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from reservation
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="merchandiseid != null and merchandiseid!=''">
+                    and merchandiseid=#{merchandiseid}
+                </if>
+                <if test="rname != null and rname!=''">
+                    and rname=#{rname}
+                </if>
+                <if test="rphone != null and rphone!=''">
+                    and rphone=#{rphone}
+                </if>
+                <if test="maketime != null and maketime!=''">
+                    and maketime=#{maketime}
+                </if>
+                <if test="ordertime != null and ordertime!=''">
+                    and ordertime=#{ordertime}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertReservation" parameterType="com.zb.pojo.Reservation">
+        insert into reservation(
+                        merchandiseid,
+                        rname,
+                        rphone,
+                        maketime,
+                        ordertime)
+        values(
+                     #{merchandiseid},
+                     #{rname},
+                     #{rphone},
+                     #{maketime},
+                    #{ordertime})
+    </insert>
+
+    <update id="updateReservation" parameterType="com.zb.pojo.Reservation">
+        update reservation
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="merchandiseid != null and merchandiseid!=''">
+                            merchandiseid=#{merchandiseid},
+                        </if>
+                        <if test="rname != null and rname!=''">
+                            rname=#{rname},
+                        </if>
+                        <if test="rphone != null and rphone!=''">
+                            rphone=#{rphone},
+                        </if>
+                        <if test="maketime != null and maketime!=''">
+                            maketime=#{maketime},
+                        </if>
+                        <if test="ordertime != null and ordertime!=''">
+                            ordertime=#{ordertime}
+                        </if>
+        </trim>
+    </update>
+</mapper>
