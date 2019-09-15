@@ -18,8 +18,8 @@
                 freight as freight
         from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">
-                and id=#{id}
+            <if test="orderid != null">
+                and orderid=#{orderid}
             </if>
         </trim>
     </select>
