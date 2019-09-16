@@ -15,6 +15,7 @@
                 reply as reply,
                 orderid as orderid,
                 etime as etime
+          el as el
         from evaluate
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -30,6 +31,7 @@
                 reply as reply,
                 orderid as orderid,
                 etime as etime
+        el as el
         from evaluate
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -47,6 +49,9 @@
                 <if test="etime != null and etime!=''">
                     and etime=#{etime}
                 </if>
+            <if test="el != null and el!=''">
+                and el=#{el}
+            </if>
         </trim>
         <if test="beginPos != null and pageSize != null ">
             limit #{beginPos},#{pageSize}
@@ -71,6 +76,9 @@
                 <if test="etime != null and etime!=''">
                     and etime=#{etime}
                 </if>
+            <if test="el != null and el!=''">
+                and el=#{el}
+            </if>
         </trim>
     </select>
 
@@ -79,12 +87,14 @@
                         content,
                         reply,
                         orderid,
-                        etime)
+                        etime,
+                        el)
         values(
                      #{content},
                      #{reply},
                      #{orderid},
-                    #{etime})
+                    #{etime},
+                    #{el})
     </insert>
 
     <update id="updateEvaluate" parameterType="com.zb.pojo.Evaluate">
@@ -102,6 +112,9 @@
                         <if test="etime != null and etime!=''">
                             etime=#{etime}
                         </if>
+            <if test="el != null and el!=''">
+                el=#{el}
+            </if>
         </trim>
     </update>
 
