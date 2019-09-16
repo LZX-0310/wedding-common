@@ -5,7 +5,7 @@
 <mapper namespace="com.zb.mapper.EvaluateMapper">
 
     <select id="findListById" resultType="com.zb.pojo.Evaluate">
-        select * from where orderid = #{id}
+        select * from evaluate where orderid = #{id}
     </select>
 
     <select id="getEvaluateById" resultType="com.zb.pojo.Evaluate">
