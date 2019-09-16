@@ -93,14 +93,12 @@
     <insert id="insertEvaluate" parameterType="com.zb.pojo.Evaluate">
         insert into evaluate(
                         content,
-                        reply,
                         orderid,
                         etime,
                         el,
                         commodityid)
         values(
                      #{content},
-                     #{reply},
                      #{orderid},
                     #{etime},
                     #{el},
@@ -134,4 +132,7 @@
     <delete id="deleteEvaluateById" parameterType="int">
         delete from evaluate where id= #{id}
     </delete>
+    <update id="byOrderIdUpdate" parameterType="com.zb.pojo.Evaluate">
+        update evaluate set reply=#{reply} where orderid = #{orderid}
+    </update>
 </mapper>
