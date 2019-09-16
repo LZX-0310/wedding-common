@@ -183,16 +183,7 @@
         </trim>
     </update>
 
-
-    <select id="loginUser" resultType="com.zb.pojo.User" parameterType="java.util.Map">
-        select*from `user` u where u.`phone`=#{uname} or u.`number`=#{uname}  and u.`password`=#{password}
-    </select>
-
-    <select id="getUserByPhone" resultType="com.zb.pojo.User">
-        select*from `user` u where u.`phone`=#{phone}
-    </select>
-
-    <select id="loginUser" resultType="com.zb.pojo.User" parameterType="java.util.Map">
+    <select id="loginUser" resultType="com.zb.pojo.User" >
     select*from `user` u where u.`phone`=#{uname} or u.`number`=#{uname}  and u.`password`=#{password}
 </select>
 

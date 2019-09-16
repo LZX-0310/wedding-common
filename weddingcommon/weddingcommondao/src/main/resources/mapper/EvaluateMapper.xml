@@ -112,9 +112,9 @@
                         <if test="etime != null and etime!=''">
                             etime=#{etime}
                         </if>
-            <if test="el != null and el!=''">
-                el=#{el}
-            </if>
+                        <if test="el != null and el!=''">
+                                   el=#{el}
+                        </if>
         </trim>
     </update>
 
