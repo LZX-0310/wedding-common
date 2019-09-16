@@ -27,6 +27,6 @@ public interface EvaluateMapper {
 
 	public List<Evaluate> byIdGetList(Integer id) throws Exception;
 
-	public Integer byOrderIdUpdate(Integer orderid)throws Exception;
+	public Integer byOrderIdUpdate(Map<String,Object> map)throws Exception;
 
 }
