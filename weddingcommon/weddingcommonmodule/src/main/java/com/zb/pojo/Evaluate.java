@@ -15,6 +15,8 @@ public class Evaluate implements Serializable {
     private Integer orderid;
     //评价时间
     private Date etime;
+    //评分
+    private Integer el;
     //get set 方法
     public void setId (Integer  id){
         this.id=id;
@@ -45,5 +47,13 @@ public class Evaluate implements Serializable {
     }
     public  Date getEtime(){
         return this.etime;
+    }
+
+    public Integer getEvaluate() {
+        return el;
+    }
+
+    public void setEvaluate(Integer evaluate) {
+        this.el = evaluate;
     }
 }
