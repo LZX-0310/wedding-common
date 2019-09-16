@@ -22,7 +22,7 @@ public interface EvaluateMapper {
 
 	public Integer batchDeleteEvaluate(Map<String,List<String>> params);
 
-	public List<Evaluate> findListById(Integer id)throws Exception;
+	public List<Evaluate> findListById(@Param("id") Integer id)throws Exception;
 
 	public List<Evaluate> byIdGetList(Integer id) throws Exception;
 
