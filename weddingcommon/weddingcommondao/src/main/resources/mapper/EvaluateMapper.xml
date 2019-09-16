@@ -92,12 +92,14 @@
 
     <insert id="insertEvaluate" parameterType="com.zb.pojo.Evaluate">
         insert into evaluate(
+                        id,
                         content,
                         orderid,
                         etime,
                         el,
                         commodityid)
         values(
+          null,
                      #{content},
                      #{orderid},
                     #{etime},
