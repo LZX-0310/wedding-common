@@ -126,4 +126,8 @@
                            </if>
         </trim>
     </update>
+
+    <delete id="deleteWarehouseById" parameterType="com.zb.pojo.Warehouse">
+        delete from warehouse where  id=#{id}
+    </delete>
 </mapper>
