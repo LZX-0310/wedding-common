@@ -17,6 +17,8 @@ public class Evaluate implements Serializable {
     private Date etime;
     //评分
     private Integer el;
+    //商品id
+    private Integer commodityid;
     //get set 方法
     public void setId (Integer  id){
         this.id=id;
@@ -55,5 +57,21 @@ public class Evaluate implements Serializable {
 
     public void setEvaluate(Integer evaluate) {
         this.el = evaluate;
+    }
+
+    public Integer getEl() {
+        return el;
+    }
+
+    public void setEl(Integer el) {
+        this.el = el;
+    }
+
+    public Integer getCommodityid() {
+        return commodityid;
+    }
+
+    public void setCommodityid(Integer commodityid) {
+        this.commodityid = commodityid;
     }
 }
