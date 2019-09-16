@@ -22,4 +22,6 @@ public interface EvaluateMapper {
 
 	public Integer batchDeleteEvaluate(Map<String,List<String>> params);
 
+	public List<Evaluate> byIdGetList(Integer id) throws Exception;
+
 }
