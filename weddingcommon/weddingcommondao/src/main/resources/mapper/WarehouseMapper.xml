@@ -12,7 +12,8 @@
                 price as price,
                 sale as sale,
                 purchase as purchase,
-               xystock as xystock
+               xystock as xystock,
+               updatetime as updatetime
         from warehouse
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -29,7 +30,8 @@
                 price as price,
                 sale as sale,
                  purchase as purchase,
-                 xystock as xystock
+                 xystock as xystock,
+               updatetime as updatetime
         from warehouse
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -53,6 +55,9 @@
                <if test="xystock != null and xystock!=''">
                 and xystock=#{xystock}
                   </if>
+            <if test="updatetime != null and updatetime!=''">
+                and updatetime=#{updatetime}
+            </if>
         </trim>
         <if test="index != null and index != null ">
             limit ${index},${size}
@@ -83,6 +88,9 @@
             <if test="xystock != null and xystock!=''">
                 and xystock=#{xystock}
             </if>
+            <if test="updatetime != null and updatetime!=''">
+                and updatetime=#{updatetime}
+            </if>
         </trim>
     </select>
 
@@ -93,14 +101,16 @@
                         price,
                         sale,
                         purchase,
-                        xystock)
+                        xystock,
+                        updatetime)
         values(
                      #{commodityid},
                      #{stock},
                      #{price},
                     #{sale},
                     #{purchase},
-                    #{xystock})
+                    #{xystock},
+                     now();)
     </insert>
 
     <update id="updateWarehouse" parameterType="com.zb.pojo.Warehouse">
@@ -119,11 +129,14 @@
                             sale=#{sale}
                         </if>
                          <if test="purchase != null and purchase!=''">
-                              and purchase=#{purchase}
+                               purchase=#{purchase}
                           </if>
                           <if test="xystock != null and xystock!=''">
                                xystock=#{xystock}
                            </if>
+            <if test="updatetime != null and updatetime!=''">
+                 updatetime=#{updatetime}
+            </if>
         </trim>
     </update>
 
