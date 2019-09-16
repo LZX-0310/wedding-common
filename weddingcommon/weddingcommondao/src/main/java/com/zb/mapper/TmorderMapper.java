@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TmorderMapper {
      //唯一查
-	public Tmorder getTmorderById(@Param(value = "orderid") Integer orderid)throws Exception;
+	public Tmorder getTmorderById(@Param("orderid") Integer orderid)throws Exception;
     //全部查
 	public List<Tmorder>	getTmorderListByMap(Map<String,Object> map)throws Exception;
     //查次数
@@ -17,7 +17,6 @@ public interface TmorderMapper {
 	public Integer insertTmorder(Tmorder tmorder)throws Exception;
 
 	public Integer updateTmorder(Tmorder tmorder)throws Exception;
-
 
 	public Integer batchDeleteTmorder(Map<String,List<String>> params);
 
