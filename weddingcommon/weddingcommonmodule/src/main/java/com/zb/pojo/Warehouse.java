@@ -19,7 +19,16 @@ public class Warehouse implements Serializable {
 	private  Integer purchase;
     //现有库存量
 	private  Integer xystock;
+   //修改时间
+	private  String updatetime;
 
+	public String getUpdatetime() {
+		return updatetime;
+	}
+
+	public void setUpdatetime(String updatetime) {
+		this.updatetime = updatetime;
+	}
 
 	public Integer getPurchase() {
 		return purchase;
