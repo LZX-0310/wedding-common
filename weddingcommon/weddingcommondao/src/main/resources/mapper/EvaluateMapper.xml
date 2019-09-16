@@ -14,8 +14,9 @@
                 content as content,
                 reply as reply,
                 orderid as orderid,
-                etime as etime
-          el as el
+                etime as etime,
+          el as el,
+        commodityid as commodityid
         from evaluate
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -30,8 +31,9 @@
                 content as content,
                 reply as reply,
                 orderid as orderid,
-                etime as etime
-        el as el
+                etime as etime,
+        el as el,
+        commodityid as commodityid
         from evaluate
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -51,6 +53,9 @@
                 </if>
             <if test="el != null and el!=''">
                 and el=#{el}
+            </if>
+            <if test="commodityid != null and commodityid!=''">
+                and commodityid=#{commodityid}
             </if>
         </trim>
         <if test="beginPos != null and pageSize != null ">
@@ -79,22 +84,27 @@
             <if test="el != null and el!=''">
                 and el=#{el}
             </if>
+            <if test="commodityid != null and commodityid!=''">
+                and commodityid=#{commodityid}
+            </if>
         </trim>
     </select>
 
     <insert id="insertEvaluate" parameterType="com.zb.pojo.Evaluate">
         insert into evaluate(
+                        id,
                         content,
-                        reply,
                         orderid,
                         etime,
-                        el)
+                        el,
+                        commodityid)
         values(
+                       null，
                      #{content},
-                     #{reply},
                      #{orderid},
                     #{etime},
-                    #{el})
+                    #{el},
+                    #{commodityid})
     </insert>
 
     <update id="updateEvaluate" parameterType="com.zb.pojo.Evaluate">
@@ -115,10 +125,16 @@
                         <if test="el != null and el!=''">
                                    el=#{el}
                         </if>
+            <if test="commodityid != null and commodityid!=''">
+                commodityid=#{commodityid}
+            </if>
         </trim>
     </update>
 
     <delete id="deleteEvaluateById" parameterType="int">
         delete from evaluate where id= #{id}
     </delete>
+    <update id="byOrderIdUpdate" parameterType="com.zb.pojo.Evaluate">
+        update evaluate set reply=#{reply} where orderid = #{orderid}
+    </update>
 </mapper>

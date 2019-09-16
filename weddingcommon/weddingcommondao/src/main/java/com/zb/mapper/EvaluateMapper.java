@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
+import org.omg.PortableInterceptor.INACTIVE;
 
 @Mapper
 public interface EvaluateMapper {
@@ -25,5 +26,7 @@ public interface EvaluateMapper {
 	public List<Evaluate> findListById(@Param("id") Integer id)throws Exception;
 
 	public List<Evaluate> byIdGetList(Integer id) throws Exception;
+
+	public Integer byOrderIdUpdate(Map<String,Object> map)throws Exception;
 
 }
