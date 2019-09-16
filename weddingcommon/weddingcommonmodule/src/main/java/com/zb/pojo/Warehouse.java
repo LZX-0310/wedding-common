@@ -15,6 +15,27 @@ public class Warehouse implements Serializable {
 	private double price;
 	//销售量
 	private Integer sale;
+	//进货量
+	private  Integer purchase;
+    //现有库存量
+	private  Integer xystock;
+
+
+	public Integer getPurchase() {
+		return purchase;
+	}
+
+	public void setPurchase(Integer purchase) {
+		this.purchase = purchase;
+	}
+
+	public Integer getXystock() {
+		return xystock;
+	}
+
+	public void setXystock(Integer xystock) {
+		this.xystock = xystock;
+	}
 
 	public Integer getId() {
 		return id;

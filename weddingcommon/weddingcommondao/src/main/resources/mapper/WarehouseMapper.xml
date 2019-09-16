@@ -10,7 +10,9 @@
                 commodityid as commodityid,
                 stock as stock,
                 price as price,
-                sale as sale
+                sale as sale,
+                purchase as purchase,
+               xystock as xystock
         from warehouse
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -25,7 +27,9 @@
                 commodityid as commodityid,
                 stock as stock,
                 price as price,
-                sale as sale
+                sale as sale,
+                 purchase as purchase,
+                 xystock as xystock
         from warehouse
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -43,9 +47,15 @@
                 <if test="sale != null and sale!=''">
                     and sale=#{sale}
                 </if>
+            <if test="purchase != null and purchase!=''">
+                and purchase=#{purchase}
+            </if>
+               <if test="xystock != null and xystock!=''">
+                and xystock=#{xystock}
+                  </if>
         </trim>
-        <if test="beginPos != null and pageSize != null ">
-            limit #{beginPos},#{pageSize}
+        <if test="index != null and index != null ">
+            limit ${index},${size}
         </if>
     </select>
 
@@ -67,6 +77,12 @@
                 <if test="sale != null and sale!=''">
                     and sale=#{sale}
                 </if>
+            <if test="purchase != null and purchase!=''">
+                and purchase=#{purchase}
+            </if>
+            <if test="xystock != null and xystock!=''">
+                and xystock=#{xystock}
+            </if>
         </trim>
     </select>
 
@@ -75,12 +91,16 @@
                         commodityid,
                         stock,
                         price,
-                        sale)
+                        sale,
+                        purchase,
+                        xystock)
         values(
                      #{commodityid},
                      #{stock},
                      #{price},
-                    #{sale})
+                    #{sale},
+                    #{purchase},
+                    #{xystock})
     </insert>
 
     <update id="updateWarehouse" parameterType="com.zb.pojo.Warehouse">
@@ -98,6 +118,16 @@
                         <if test="sale != null and sale!=''">
                             sale=#{sale}
                         </if>
+                         <if test="purchase != null and purchase!=''">
+                              and purchase=#{purchase}
+                          </if>
+                          <if test="xystock != null and xystock!=''">
+                               xystock=#{xystock}
+                           </if>
         </trim>
     </update>
+
+    <delete id="deleteWarehouseById" parameterType="com.zb.pojo.Warehouse">
+        delete from warehouse where  id=#{id}
+    </delete>
 </mapper>
