@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zb.mapper.EvaluateMapper">
 
+    <select id="findListById" resultType="com.zb.pojo.Evaluate">
+        select * from where orderid = #{id}
+    </select>
+
     <select id="getEvaluateById" resultType="com.zb.pojo.Evaluate">
         select
                 id as id,
