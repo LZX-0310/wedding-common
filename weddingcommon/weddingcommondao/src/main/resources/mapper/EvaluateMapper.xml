@@ -99,7 +99,7 @@
                         el,
                         commodityid)
         values(
-                       null，
+                       null,
                      #{content},
                      #{orderid},
                     #{etime},
