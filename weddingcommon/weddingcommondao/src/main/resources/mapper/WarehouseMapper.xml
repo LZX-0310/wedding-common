@@ -60,7 +60,7 @@
             </if>
         </trim>
         <if test="index != null and index != null ">
-            limit ${index},${size}
+         order by updatetime DESC limit ${index},${size}
         </if>
     </select>
 
@@ -94,6 +94,7 @@
         </trim>
     </select>
 
+
     <insert id="insertWarehouse" parameterType="com.zb.pojo.Warehouse">
         insert into warehouse(
                         commodityid,
@@ -110,7 +111,7 @@
                     #{sale},
                     #{purchase},
                     #{xystock},
-                     now();)
+                     now())
     </insert>
 
     <update id="updateWarehouse" parameterType="com.zb.pojo.Warehouse">
