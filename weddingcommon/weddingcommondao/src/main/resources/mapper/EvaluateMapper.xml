@@ -102,7 +102,7 @@
                        null,
                      #{content},
                      #{orderid},
-                    #{etime},
+                    now(),
                     #{el},
                     #{commodityid})
     </insert>
