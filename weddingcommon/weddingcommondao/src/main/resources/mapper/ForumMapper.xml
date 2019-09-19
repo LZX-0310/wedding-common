@@ -5,30 +5,11 @@
 <mapper namespace="com.zb.mapper.ForumMapper">
 
     <select id="getForumById" resultType="com.zb.pojo.Forum">
-        select
-                id as id,
-                userid as userid,
-                title as title,
-                content as content,
-                sum as sum,
-                num as num
-        from forum
-        <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">
-                and id=#{id}
-            </if>
-        </trim>
+        select * from forum where id=#{id}
     </select>
 
     <select id="getForumListByMap" resultType="com.zb.pojo.Forum" parameterType="java.util.Map">
-        select
-                id as id,
-                userid as userid,
-                title as title,
-                content as content,
-                sum as sum,
-                num as num
-        from forum
+        select * from forum
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
                     and id=#{id}
@@ -48,9 +29,10 @@
                 <if test="num != null and num!=''">
                     and num=#{num}
                 </if>
+            order by num
         </trim>
-        <if test="beginPos != null and pageSize != null ">
-            limit #{beginPos},#{pageSize}
+        <if test="start != null and size != null ">
+          limit ${start},${size}
         </if>
     </select>
 
@@ -80,17 +62,21 @@
 
     <insert id="insertForum" parameterType="com.zb.pojo.Forum">
         insert into forum(
+                        id,
                         userid,
                         title,
                         content,
                         sum,
-                        num)
+                        num,
+                        createtime)
         values(
+                      null,
                      #{userid},
                      #{title},
                      #{content},
                      #{sum},
-                    #{num})
+                    #{num},
+                    now())
     </insert>
 
     <update id="updateForum" parameterType="com.zb.pojo.Forum">
@@ -109,7 +95,10 @@
                             sum=#{sum},
                         </if>
                         <if test="num != null and num!=''">
-                            num=#{num}
+                            num=#{num},
+                        </if>
+                        <if test="createtime!=null and createtime!=''">
+                            createtime=now()
                         </if>
         </trim>
     </update>
