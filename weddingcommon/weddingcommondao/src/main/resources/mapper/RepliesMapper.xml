@@ -4,87 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zb.mapper.RepliesMapper">
 
-    <select id="getRepliesById" resultType="com.zb.pojo.Replies">
-        select
-                id as id,
-                userid as userid,
-                content as content,
-                forumid as forumid
-        from replies
-        <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">
-                and id=#{id}
-            </if>
-        </trim>
-    </select>
-
-    <select id="getRepliesListByMap" resultType="com.zb.pojo.Replies" parameterType="java.util.Map">
-        select
-                id as id,
-                userid as userid,
-                content as content,
-                forumid as forumid
-        from replies
-        <trim prefix="where" prefixOverrides="and | or">
-                <if test="id != null and id!=''">
-                    and id=#{id}
-                </if>
-                <if test="userid != null and userid!=''">
-                    and userid=#{userid}
-                </if>
-                <if test="content != null and content!=''">
-                    and content=#{content}
-                </if>
-                <if test="forumid != null and forumid!=''">
-                    and forumid=#{forumid}
-                </if>
-        </trim>
-        <if test="beginPos != null and pageSize != null ">
-            limit #{beginPos},#{pageSize}
-        </if>
-    </select>
-
-    <select id="getRepliesCountByMap" resultType="Integer"  parameterType="java.util.Map">
-        select count(*) from replies
-        <trim prefix="where" prefixOverrides="and | or">
-                <if test="id != null and id!=''">
-                    and id=#{id}
-                </if>
-                <if test="userid != null and userid!=''">
-                    and userid=#{userid}
-                </if>
-                <if test="content != null and content!=''">
-                    and content=#{content}
-                </if>
-                <if test="forumid != null and forumid!=''">
-                    and forumid=#{forumid}
-                </if>
-        </trim>
+    <select id="getRepliesByFid" resultType="com.zb.pojo.Replies">
+        select * from replies where forumid=#{fid}
     </select>
 
     <insert id="insertReplies" parameterType="com.zb.pojo.Replies">
-        insert into replies(
-                        userid,
-                        content,
-                        forumid)
-        values(
+        insert into replies values(
+                      null，
                      #{userid},
                      #{content},
-                    #{forumid})
+                    #{forumid},
+                    now())
     </insert>
 
-    <update id="updateReplies" parameterType="com.zb.pojo.Replies">
-        update replies
-        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
-                        <if test="userid != null and userid!=''">
-                            userid=#{userid},
-                        </if>
-                        <if test="content != null and content!=''">
-                            content=#{content},
-                        </if>
-                        <if test="forumid != null and forumid!=''">
-                            forumid=#{forumid}
-                        </if>
-        </trim>
-    </update>
+
 </mapper>
