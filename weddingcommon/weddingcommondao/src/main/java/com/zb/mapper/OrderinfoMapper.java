@@ -23,10 +23,10 @@ public interface OrderinfoMapper {
 
 	public Integer batchDeleteOrderinfo(Map<String,List<String>> params)throws Exception;
 
-	public Integer updateState(@Param(value = "state")Integer state)throws Exception;
+	public Integer updateState(Orderinfo orderinfo)throws Exception;
 
-	public Integer updateLogisticsid(@Param(value = "logisticsid")Integer logisticsid)throws Exception;
+	public Integer updateLogisticsid(Orderinfo orderinfo)throws Exception;
 
-	public Integer updateAddress(@Param(value = "address")String address)throws Exception;
+	public Integer updateAddress(Orderinfo orderinfo)throws Exception;
 
 }
