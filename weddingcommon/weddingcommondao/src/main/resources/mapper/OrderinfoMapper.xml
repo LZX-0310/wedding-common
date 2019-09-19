@@ -179,4 +179,13 @@
                         </if>
         </trim>
     </update>
+    <update id="updateState" parameterType="com.zb.pojo.Orderinfo">
+        update orderinfo set state=#{state} where orderid=#{orderid}
+    </update>
+    <update id="updateLogisticsid" parameterType="com.zb.pojo.Orderinfo">
+        update orderinfo set logisticsid=#{logisticsid} where orderid=#{orderid}
+    </update>
+    <update id="updateAddress" parameterType="com.zb.pojo.Orderinfo">
+        update orderinfo set address=#{address} where orderid=#{orderid}
+    </update>
 </mapper>
