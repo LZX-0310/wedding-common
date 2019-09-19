@@ -72,11 +72,13 @@
 
     <insert id="insertAddress" parameterType="com.zb.pojo.Address">
         insert into address(
+                        id,
                         name,
                         address,
                         phone,
                         post)
         values(
+                      null,
                      #{name},
                      #{address},
                      #{phone},
@@ -100,4 +102,8 @@
                         </if>
         </trim>
     </update>
+
+    <delete id="deleteAddressById">
+        delete from `address` where id=#{id}
+    </delete>
 </mapper>
