@@ -99,10 +99,10 @@
                         el,
                         commodityid)
         values(
-                       null，
+                       null,
                      #{content},
                      #{orderid},
-                    #{etime},
+                    now(),
                     #{el},
                     #{commodityid})
     </insert>

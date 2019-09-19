@@ -25,6 +25,8 @@ public class Orderinfo implements Serializable {
 	private String remrks;
 	//运费
 	private double freight;
+	//物流id
+	private Integer logisticsid;
 
 	public Integer getId() {
 		return id;
@@ -104,5 +106,13 @@ public class Orderinfo implements Serializable {
 
 	public void setFreight(double freight) {
 		this.freight = freight;
+	}
+
+	public Integer getLogisticsid() {
+		return logisticsid;
+	}
+
+	public void setLogisticsid(Integer logisticsid) {
+		this.logisticsid = logisticsid;
 	}
 }

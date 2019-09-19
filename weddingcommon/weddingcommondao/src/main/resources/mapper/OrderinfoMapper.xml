@@ -16,6 +16,7 @@
                 price as price,
                 remrks as remrks,
                 freight as freight
+        logisticsid as logisticsid
         from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
             <if test="orderid != null">
@@ -36,6 +37,7 @@
                 price as price,
                 remrks as remrks,
                 freight as freight
+        logisticsid as logisticsid
             from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -67,6 +69,9 @@
                 </if>
                 <if test="freight != null and freight!=''">
                     and freight=#{freight}
+                </if>
+                <if test="logisticsid != null and logisticsid!=''">
+                    and logisticsid=#{logisticsid}
                 </if>
         </trim>
         <if test="index != null and size != null ">
@@ -107,6 +112,9 @@
                 <if test="freight != null and freight!=''">
                     and freight=#{freight}
                 </if>
+                <if test="logisticsid != null and logisticsid!=''">
+                    and logisticsid=#{logisticsid}
+                </if>
         </trim>
     </select>
 
@@ -120,17 +128,20 @@
                         datetime,
                         price,
                         remrks,
-                        freight)
+                        freight,
+                        logisticsid
+                       )
         values(
                      #{orderid},
                      #{address},
                      #{phone},
                      #{userid},
-                     #{state},
-                     #{datetime},
+                    1,
+                     now(),
                      #{price},
                      #{remrks},
-                    #{freight})
+                    #{freight},
+                     #{logisticsid})
     </insert>
 
     <update id="updateOrderinfo" parameterType="com.zb.pojo.Orderinfo">
@@ -163,6 +174,18 @@
                         <if test="freight != null and freight!=''">
                             freight=#{freight}
                         </if>
+                        <if test="logisticsid != null and logisticsid!=''">
+                            logisticsid=#{logisticsid}
+                        </if>
         </trim>
+    </update>
+    <update id="updateState" parameterType="com.zb.pojo.Orderinfo">
+        update orderinfo set state=#{state} where orderid=#{orderid}
+    </update>
+    <update id="updateLogisticsid" parameterType="com.zb.pojo.Orderinfo">
+        update orderinfo set logisticsid=#{logisticsid} where orderid=#{orderid}
+    </update>
+    <update id="updateAddress" parameterType="com.zb.pojo.Orderinfo">
+        update orderinfo set address=#{address} where orderid=#{orderid}
     </update>
 </mapper>

@@ -21,6 +21,12 @@ public interface OrderinfoMapper {
 
 	public Integer deleteOrderinfoById(@Param(value = "id") Integer id)throws Exception;
 
-	public Integer batchDeleteOrderinfo(Map<String,List<String>> params);
+	public Integer batchDeleteOrderinfo(Map<String,List<String>> params)throws Exception;
+
+	public Integer updateState(Orderinfo orderinfo)throws Exception;
+
+	public Integer updateLogisticsid(Orderinfo orderinfo)throws Exception;
+
+	public Integer updateAddress(Orderinfo orderinfo)throws Exception;
 
 }
