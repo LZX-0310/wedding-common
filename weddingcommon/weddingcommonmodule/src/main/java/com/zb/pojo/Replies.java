@@ -13,6 +13,8 @@ public class Replies implements Serializable {
     private String content;
     //引用论坛id
     private Integer forumid;
+    //评论时间
+    private String talkTime;
     //get set 方法
     public void setId (Integer  id){
         this.id=id;
@@ -37,5 +39,13 @@ public class Replies implements Serializable {
     }
     public  Integer getForumid(){
         return this.forumid;
+    }
+
+    public String getTalkTime() {
+        return talkTime;
+    }
+
+    public void setTalkTime(String talkTime) {
+        this.talkTime = talkTime;
     }
 }
