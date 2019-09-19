@@ -17,6 +17,8 @@ public class Forum implements Serializable {
     private Integer sum;
     //点赞数
     private Integer num;
+    //创建时间
+    private String createTime;
     //get set 方法
     public void setId (Integer  id){
         this.id=id;
@@ -53,5 +55,13 @@ public class Forum implements Serializable {
     }
     public  Integer getNum(){
         return this.num;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }
