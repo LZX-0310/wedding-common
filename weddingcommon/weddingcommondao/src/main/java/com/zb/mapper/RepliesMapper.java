@@ -8,18 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RepliesMapper {
 
-	public Replies getRepliesById(@Param(value = "id") Integer id)throws Exception;
-
-	public List<Replies>	getRepliesListByMap(Map<String,Object> param)throws Exception;
-
-	public Integer getRepliesCountByMap(Map<String,Object> param)throws Exception;
+	public List<Replies> getRepliesByFid(@Param(value = "fid") Integer fid)throws Exception;
 
 	public Integer insertReplies(Replies replies)throws Exception;
-
-	public Integer updateReplies(Replies replies)throws Exception;
-
-	public Integer deleteRepliesById(@Param(value = "id") Integer id)throws Exception;
-
-	public Integer batchDeleteReplies(Map<String,List<String>> params);
 
 }
