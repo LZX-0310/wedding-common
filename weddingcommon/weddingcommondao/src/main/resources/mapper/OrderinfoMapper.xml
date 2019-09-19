@@ -126,7 +126,7 @@
                      #{address},
                      #{phone},
                      #{userid},
-                     #{state},
+                    1,
                      now(),
                      #{price},
                      #{remrks},
