@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 配置文件与接口映射 -->
+<mapper namespace="com.zb.mapper.ForumPhotoMapper">
+    <select id="getforumPhotoByFid" resultType="com.zb.pojo.ForumPhoto">
+        select * from forumphoto where fid=#{fid}
+    </select>
+    <insert id="insertPhoto" parameterType="com.zb.pojo.ForumPhoto">
+        insert into forumphoto values(null,#{photo},#{fid})
+    </insert>
+    <delete id="deletePhone">
+        delete from forumphoto where fid=#{fid}
+    </delete>
+</mapper>
