@@ -20,5 +20,6 @@ public interface WarehouseMapper {
 
 	public Integer deleteWarehouseById(@Param(value = "id") Integer id)throws Exception;
 
-
+    //查销量
+	public List<Warehouse>getWarehousexl()throws Exception;
 }
