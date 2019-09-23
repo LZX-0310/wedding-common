@@ -1,5 +1,6 @@
 package com.zb.mapper;
 import com.zb.pojo.Warehouse;
+import com.zb.vo.Xlvo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
@@ -21,5 +22,5 @@ public interface WarehouseMapper {
 	public Integer deleteWarehouseById(@Param(value = "id") Integer id)throws Exception;
 
     //查销量
-	public List<Warehouse>getWarehousexl()throws Exception;
+	public List<Xlvo>getXl()throws Exception;
 }
