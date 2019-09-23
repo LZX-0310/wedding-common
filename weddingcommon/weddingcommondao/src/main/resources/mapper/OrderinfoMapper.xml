@@ -36,8 +36,8 @@
                 datetime as datetime,
                 price as price,
                 remrks as remrks,
-                freight as freight
-        logisticsid as logisticsid
+                freight as freight,
+             logisticsid as logisticsid
             from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
