@@ -29,4 +29,6 @@ public interface OrderinfoMapper {
 
 	public Integer updateAddress(Orderinfo orderinfo)throws Exception;
 
+	public Orderinfo getOrderById(@Param("orderid")String orderid)throws Exception;
+
 }
