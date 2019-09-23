@@ -1,5 +1,7 @@
 package com.zb.vo;
 
+import com.zb.pojo.Commodity;
+
 import java.io.Serializable;
 
 /**
@@ -10,7 +12,17 @@ public class Xlvo implements Serializable {
     private  Integer commodityid;
     //商品总销量
     private  Integer  sumsale;
+    //商品对象
+    private String cname;
 
+
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
 
     public Integer getCommodityid() {
         return commodityid;
