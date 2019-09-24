@@ -19,17 +19,18 @@
             </if>
         </trim>
     </select>
-    <sql id="where_sql">
-        <if test="id != null and id != -1">
-            where typeid=#{id}
-        </if>
-    </sql>
+    <select id="findListXtype" resultType="com.zb.pojo.Xtype">
+          select
+              *
+        from xtype
+    </select>
+
     <select id="getXtypeListByMap" resultType="com.zb.pojo.Xtype" >
         select
               *
         from xtype
 
-        <include refid="where_sql"></include>
+        where typeid=#{id}
 
     </select>
 
