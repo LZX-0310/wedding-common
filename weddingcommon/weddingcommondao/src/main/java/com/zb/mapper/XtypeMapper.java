@@ -22,4 +22,6 @@ public interface XtypeMapper {
 
 	public Integer batchDeleteXtype(Map<String,List<String>> params);
 
+	public List<Xtype> findListXtype();
+
 }
