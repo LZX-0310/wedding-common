@@ -9,6 +9,8 @@ public class Xtype implements Serializable {
     private Integer id;
     //名称
     private String xname;
+    //类型id
+    private Integer typeid;
     //get set 方法
     public void setId (Integer  id){
         this.id=id;
@@ -21,5 +23,13 @@ public class Xtype implements Serializable {
     }
     public  String getXname(){
         return this.xname;
+    }
+
+    public Integer getTypeid() {
+        return typeid;
+    }
+
+    public void setTypeid(Integer typeid) {
+        this.typeid = typeid;
     }
 }

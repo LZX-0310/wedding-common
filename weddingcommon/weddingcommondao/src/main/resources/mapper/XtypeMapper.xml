@@ -19,6 +19,11 @@
             </if>
         </trim>
     </select>
+    <select id="findListXtype" resultType="com.zb.pojo.Xtype">
+          select
+              *
+        from xtype
+    </select>
 
     <select id="getXtypeListByMap" resultType="com.zb.pojo.Xtype" >
         select
