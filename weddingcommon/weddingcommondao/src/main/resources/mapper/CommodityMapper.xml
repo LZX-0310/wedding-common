@@ -132,4 +132,7 @@
                        </if>
         </trim>
     </update>
+    <delete id="deleteCommodityById" parameterType="int">
+        delete from commodity where  id=#{id}
+    </delete>
 </mapper>

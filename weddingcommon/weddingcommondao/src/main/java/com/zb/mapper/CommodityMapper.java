@@ -20,7 +20,7 @@ public interface CommodityMapper {
 	public Integer insertCommodity(Commodity commodity)throws Exception;
     //商品状态更改
 	public Integer updateCommodity(Commodity commodity)throws Exception;
-
+   //删除商品
 	public Integer deleteCommodityById(@Param("id") Integer id)throws Exception;
 
 }
