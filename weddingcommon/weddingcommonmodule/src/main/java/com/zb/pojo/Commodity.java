@@ -22,6 +22,9 @@ public class Commodity implements Serializable {
 	//折扣价格
 	private  Integer zkprice;
 
+	//类型id
+	private Integer xtypeid;
+
 
 	public Integer getZkprice() {
 		return zkprice;
@@ -85,5 +88,13 @@ public class Commodity implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Integer getXtypeid() {
+		return xtypeid;
+	}
+
+	public void setXtypeid(Integer xtypeid) {
+		this.xtypeid = xtypeid;
 	}
 }
