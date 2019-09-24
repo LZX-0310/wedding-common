@@ -135,4 +135,10 @@
                        </if>
         </trim>
     </update>
+    <delete id="deleteCommodityById" parameterType="int">
+        delete from commodity where  id=#{id}
+    </delete>
+    <select id="getCommodityBycname" resultType="com.zb.pojo.Commodity">
+        select * from commodity where cname=#{cname}
+    </select>
 </mapper>
