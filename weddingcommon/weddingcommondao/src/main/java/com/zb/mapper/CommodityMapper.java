@@ -23,4 +23,6 @@ public interface CommodityMapper {
 
 	public Integer deleteCommodityById(@Param("id") Integer id)throws Exception;
 
+	public List<Commodity> findListCommodity();
+
 }
