@@ -21,6 +21,9 @@
             </if>
         </trim>
     </select>
+    <select id="findListCommodity" resultType="com.zb.pojo.Commodity">
+        select  * from commodity
+    </select>
 
     <select id="getCommodityListByMap" resultType="com.zb.pojo.Commodity" >
         select
