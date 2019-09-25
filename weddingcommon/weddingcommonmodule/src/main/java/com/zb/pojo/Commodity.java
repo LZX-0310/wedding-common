@@ -21,7 +21,16 @@ public class Commodity implements Serializable {
 	private  Integer businessid;
 	//折扣价格
 	private  Integer zkprice;
+	//商品类型
+	private  Integer xtypeid;
 
+	public Integer getXtypeid() {
+		return xtypeid;
+	}
+
+	public void setXtypeid(Integer xtypeid) {
+		this.xtypeid = xtypeid;
+	}
 
 	public Integer getZkprice() {
 		return zkprice;
