@@ -12,6 +12,7 @@ public interface XtypeMapper {
 
 	public List<Xtype>	getXtypeListByMap(Integer id)throws Exception;
 
+
 	public Integer getXtypeCountByMap(Map<String,Object> param)throws Exception;
 
 	public Integer insertXtype(Xtype xtype)throws Exception;
@@ -21,7 +22,7 @@ public interface XtypeMapper {
 	public Integer deleteXtypeById(@Param(value = "id") Integer id)throws Exception;
 
 	public Integer batchDeleteXtype(Map<String,List<String>> params);
-
-	public List<Xtype> findListXtype();
+    //商品分类的下拉
+	public List<Xtype> findListXtype()throws Exception;
 
 }
