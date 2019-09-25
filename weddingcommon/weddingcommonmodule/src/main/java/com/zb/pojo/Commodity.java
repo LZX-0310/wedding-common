@@ -32,6 +32,7 @@ public class Commodity implements Serializable {
 		this.xtypeid = xtypeid;
 	}
 
+
 	public Integer getZkprice() {
 		return zkprice;
 	}
@@ -95,4 +96,6 @@ public class Commodity implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
 }
