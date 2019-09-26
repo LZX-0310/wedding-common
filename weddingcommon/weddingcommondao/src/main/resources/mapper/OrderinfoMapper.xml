@@ -4,6 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zb.mapper.OrderinfoMapper">
 
+    <sql id="where_sql">
+        <if test="orderid != null and orderid != -1">
+            where orderid = #{orderid}
+        </if>
+    </sql>
+    <select id="getOrderById" resultType="com.zb.pojo.Orderinfo">
+        select * from orderinfo
+        <include refid="where_sql"></include>
+    </select>
+
     <select id="getOrderinfoById" resultType="com.zb.pojo.Orderinfo">
         select
                 id as id,
@@ -36,8 +46,8 @@
                 datetime as datetime,
                 price as price,
                 remrks as remrks,
-                freight as freight
-        logisticsid as logisticsid
+                freight as freight,
+             logisticsid as logisticsid
             from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">

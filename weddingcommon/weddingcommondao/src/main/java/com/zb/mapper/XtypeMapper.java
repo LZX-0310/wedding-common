@@ -10,7 +10,7 @@ public interface XtypeMapper {
 
 	public Xtype getXtypeById(@Param(value = "id") Integer id)throws Exception;
 
-	public List<Xtype>	getXtypeListByMap(Integer id)throws Exception;
+	public List<Xtype>	getXtypeListByMap(@Param("id") Integer id)throws Exception;
 
 	public Integer getXtypeCountByMap(Map<String,Object> param)throws Exception;
 
@@ -21,5 +21,9 @@ public interface XtypeMapper {
 	public Integer deleteXtypeById(@Param(value = "id") Integer id)throws Exception;
 
 	public Integer batchDeleteXtype(Map<String,List<String>> params);
+
+	public List<Xtype> findListXtype();
+
+	public List<Xtype> findXtypeId(@Param(value = "id")Integer id)throws Exception;
 
 }

@@ -21,6 +21,9 @@
             </if>
         </trim>
     </select>
+    <select id="findListCommodity" resultType="com.zb.pojo.Commodity">
+        select  * from commodity
+    </select>
 
     <select id="getCommodityListByMap" resultType="com.zb.pojo.Commodity" >
         select
@@ -38,7 +41,7 @@
                     and id=#{id}
                 </if>
                 <if test="cname != null and cname!=''">
-                    and cname=#{cname}
+                    and cname like concat ('%',#{cname},'%')
                 </if>
                 <if test="price != null and price!=''">
                     and price=#{price}
@@ -70,9 +73,9 @@
                 <if test="id != null and id!=''">
                     and id=#{id}
                 </if>
-                <if test="cname != null and cname!=''">
-                    and cname=#{cname}
-                </if>
+               <if test="cname != null and cname!=''">
+                and cname like concat ('%',#{cname},'%')
+               </if>
                 <if test="price != null and price!=''">
                     and price=#{price}
                 </if>
@@ -132,4 +135,10 @@
                        </if>
         </trim>
     </update>
+    <delete id="deleteCommodityById" parameterType="int">
+        delete from commodity where  id=#{id}
+    </delete>
+    <select id="getCommodityBycname" resultType="com.zb.pojo.Commodity">
+        select * from commodity where cname=#{cname}
+    </select>
 </mapper>

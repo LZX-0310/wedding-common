@@ -144,4 +144,7 @@
     <delete id="deleteWarehouseById" parameterType="com.zb.pojo.Warehouse">
         delete from warehouse where  id=#{id}
     </delete>
+    <select id="getXl" resultType="com.zb.vo.Xlvo">
+  SELECT commodityid,SUM(sale) AS sumsale,c.`cname` AS cname  FROM warehouse w,`commodity` c WHERE w.`commodityid`=c.`id` GROUP BY  commodityid ORDER BY  SUM(sale) DESC
+    </select>
 </mapper>
