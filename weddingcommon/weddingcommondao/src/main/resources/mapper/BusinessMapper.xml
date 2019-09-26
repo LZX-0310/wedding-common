@@ -44,7 +44,7 @@
                     and password=#{password}
                 </if>
                 <if test="accout != null and accout!=''">
-                    and accout=#{accout}
+                    and accout like concat ('%',#{accout},'%')
                 </if>
                 <if test="fraction != null and fraction!=''">
                     and fraction=#{fraction}
@@ -76,9 +76,9 @@
                 <if test="password != null and password!=''">
                     and password=#{password}
                 </if>
-                <if test="accout != null and accout!=''">
-                    and accout=#{accout}
-                </if>
+            <if test="accout != null and accout!=''">
+                and accout like concat ('%',#{accout},'%')
+            </if>
                 <if test="fraction != null and fraction!=''">
                     and fraction=#{fraction}
                 </if>
