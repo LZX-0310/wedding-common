@@ -146,4 +146,15 @@
         </trim>
     </update>
 
+    <select id="loginBusiness" resultType="com.zb.pojo.Business" >
+        select*from `Business` u where  u.`number`=#{uname}  and u.`password`=#{password}
+</select>
+
+   <select id="getBusinessBynumber" resultType="com.zb.pojo.Business">
+       select*from `Business` u where u.`number`=#{number}
+</select>
+
+
+
+
 </mapper>

@@ -22,4 +22,6 @@ public interface TypeMapper {
 
 	public Integer batchDeleteType(Map<String,List<String>> params);
 
+	public List<Type> listTypeGet(@Param("id")Integer id)throws Exception;
+
 }
