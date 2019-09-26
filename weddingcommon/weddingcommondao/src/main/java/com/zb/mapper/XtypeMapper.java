@@ -24,4 +24,6 @@ public interface XtypeMapper {
 
 	public List<Xtype> findListXtype();
 
+	public List<Xtype> findXtypeId(@Param(value = "id")Integer id)throws Exception;
+
 }
