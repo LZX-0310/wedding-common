@@ -3,8 +3,17 @@ package com.zb.vo;
 public class SearchParam {
     private String key;
     private Integer xtypeid;
+    private Integer xtype;
     private Integer index;
     private Integer size;
+
+    public Integer getXtype() {
+        return xtype;
+    }
+
+    public void setXtype(Integer xtype) {
+        this.xtype = xtype;
+    }
 
     public String getKey() {
         return key;
