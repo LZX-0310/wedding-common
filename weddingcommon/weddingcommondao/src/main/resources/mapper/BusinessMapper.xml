@@ -154,7 +154,9 @@
        select*from `Business` u where u.`number`=#{number}
 </select>
 
-
+   <delete id="deleteBusiness" parameterType="int">
+       delete from business where id=#{id}
+   </delete>
 
 
 </mapper>
