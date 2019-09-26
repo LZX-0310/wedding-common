@@ -12,7 +12,8 @@
                 accout as accout,
                 fraction as fraction,
                 address as address,
-                state as state
+                state as state,
+                datetime as datetime
         from business
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -29,7 +30,8 @@
                 accout as accout,
                 fraction as fraction,
                 address as address,
-                 state as state
+                 state as state,
+                datetime as datetime
         from business
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -52,6 +54,9 @@
                 </if>
             <if test="state != null and state!=''">
                 and state=#{state}
+            </if>
+            <if test="datetime != null and datetime!=''">
+                and datetime=#{datetime}
             </if>
         </trim>
         <if test="index != null and size != null ">
@@ -83,6 +88,9 @@
             <if test="state != null and state!=''">
                 and state=#{state}
             </if>
+            <if test="datetime != null and datetime!=''">
+                and datetime=#{datetime}
+            </if>
         </trim>
     </select>
 
@@ -94,7 +102,8 @@
                         accout,
                         fraction,
                         address,
-                        state)
+                        state,
+                        datetime)
         values(
                        null ,
                      #{number},
@@ -102,7 +111,8 @@
                      #{accout},
                      12,
                     #{address},
-                     2)
+                     2,
+                     now())
     </insert>
 
     <update id="updateBusiness" parameterType="com.zb.pojo.Business">
@@ -118,11 +128,12 @@
                             accout=#{accout},
                         </if>
                         <if test="address != null and address!=''">
-                            address=#{address}
+                            address=#{address},
                         </if>
                       <if test="state != null and state!=''">
                             state=#{state}
                          </if>
+
         </trim>
     </update>
 
