@@ -134,15 +134,15 @@
                             state=#{state},
                         </if>
                         <if test="title != null and title!=''">
-                            title=#{title}
+                            title=#{title},
                         </if>
                        <if test="businessid != null and businessid!=''">
-                             businessid=#{businessid}
+                             businessid=#{businessid},
                         </if>
                        <if test="zkprice != null and zkprice!=''">
-                            zkprice=#{zkprice}
+                            zkprice=#{zkprice},
                        </if>
-                     <if test="xtypeid != null and xtypeid!=''">
+                     <if test="xtypeid != null and xtypeid!=0">
                             xtypeid=#{xtypeid}
                        </if>
         </trim>

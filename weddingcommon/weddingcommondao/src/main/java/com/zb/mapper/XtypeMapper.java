@@ -22,7 +22,7 @@ public interface XtypeMapper {
 	public Integer deleteXtypeById(@Param(value = "id") Integer id)throws Exception;
 
 	public Integer batchDeleteXtype(Map<String,List<String>> params);
-    //商品分类的下拉
-	public List<Xtype> findListXtype()throws Exception;
+
+	public List<Xtype> findListXtype();
 
 }

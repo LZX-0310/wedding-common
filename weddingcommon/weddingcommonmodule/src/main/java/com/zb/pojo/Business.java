@@ -19,7 +19,8 @@ public class Business implements Serializable {
     private String address;
     //1已通过2待审核3已注销
     private Integer state;
-
+    //注册时间
+    private  String datetime;
 
     //get set 方法
 
@@ -66,5 +67,13 @@ public class Business implements Serializable {
     }
     public  String getAddress(){
         return this.address;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 }
