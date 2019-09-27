@@ -6,7 +6,7 @@
 
     <select id="findXtypeId" resultType="com.zb.pojo.Xtype">
          select
-                id as id
+               *
         from xtype
         where typeid=#{id}
     </select>

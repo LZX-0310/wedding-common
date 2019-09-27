@@ -12,6 +12,7 @@ public interface XtypeMapper {
 
 	public List<Xtype>	getXtypeListByMap(@Param("id") Integer id)throws Exception;
 
+
 	public Integer getXtypeCountByMap(Map<String,Object> param)throws Exception;
 
 	public Integer insertXtype(Xtype xtype)throws Exception;

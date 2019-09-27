@@ -21,9 +21,36 @@ public class Commodity implements Serializable {
 	private  Integer businessid;
 	//折扣价格
 	private  Integer zkprice;
+	//商品类型
+	private  Integer xtypeid;
+	//和es同步
+	private String timestamp;
+	//添加时间
+	private String date;
 
-	//类型id
-	private Integer xtypeid;
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Integer getXtypeid() {
+		return xtypeid;
+	}
+
+	public void setXtypeid(Integer xtypeid) {
+		this.xtypeid = xtypeid;
+	}
 
 
 	public Integer getZkprice() {
@@ -90,11 +117,5 @@ public class Commodity implements Serializable {
 		this.title = title;
 	}
 
-	public Integer getXtypeid() {
-		return xtypeid;
-	}
 
-	public void setXtypeid(Integer xtypeid) {
-		this.xtypeid = xtypeid;
-	}
 }

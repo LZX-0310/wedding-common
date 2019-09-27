@@ -13,7 +13,10 @@
                 state as state,
                 title as title,
                 businessid as businessid,
-                zkprice as zkprice
+                zkprice as zkprice,
+                xtypeid as xtypeid,
+                timestamp as timestamp,
+                date as date
                 from commodity
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -34,7 +37,10 @@
                 state as state,
                 title as title,
              businessid as businessid,
-               zkprice  as zkprice
+               zkprice  as zkprice,
+               xtypeid as xtypeid
+        timestamp as timestamp,
+        date as date
          from commodity
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -60,6 +66,9 @@
             </if>
             <if test="zkprice != null and zkprice!=''">
                 and zkprice=#{zkprice}
+            </if>
+            <if test="xtypeid != null and xtypeid!=''">
+                and xtypeid=#{xtypeid}
             </if>
         </trim>
         <if test="index != null and size != null ">
@@ -94,6 +103,9 @@
             <if test="zkprice != null and zkprice!=''">
                 and zkprice=#{zkprice}
             </if>
+            <if test="xtypeid != null and xtypeid!=''">
+                and xtypeid=#{xtypeid}
+            </if>
         </trim>
     </select>
 
@@ -106,7 +118,10 @@
                      #{state},
                     #{title},
                     #{businessid},
-                    #{zkprice})
+                    #{zkprice},
+                    #{xtypeid},
+                    now(),
+                    now())
     </insert>
 
     <update id="updateCommodity" parameterType="com.zb.pojo.Commodity">
@@ -125,13 +140,16 @@
                             state=#{state},
                         </if>
                         <if test="title != null and title!=''">
-                            title=#{title}
+                            title=#{title},
                         </if>
                        <if test="businessid != null and businessid!=''">
-                             businessid=#{businessid}
+                             businessid=#{businessid},
                         </if>
                        <if test="zkprice != null and zkprice!=''">
-                            zkprice=#{zkprice}
+                            zkprice=#{zkprice},
+                       </if>
+                     <if test="xtypeid != null and xtypeid!=0">
+                            xtypeid=#{xtypeid}
                        </if>
         </trim>
     </update>

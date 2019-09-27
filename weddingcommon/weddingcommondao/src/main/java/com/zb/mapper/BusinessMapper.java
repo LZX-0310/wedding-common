@@ -32,5 +32,6 @@ public Business loginBusiness(Map<String,Object> map)throws Exception;
 //    //根据手机号查询用户
   public Business getBusinessBynumber(@Param(value = "number") String number)throws Exception;
 
-
+   //商家删除
+	public  int deleteBusiness(@Param("id")Integer id)throws  Exception;
 }
