@@ -14,7 +14,9 @@
                 title as title,
                 businessid as businessid,
                 zkprice as zkprice,
-                xtypeid as xtypeid
+                xtypeid as xtypeid,
+                timestamp as timestamp,
+                date as date
                 from commodity
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -37,6 +39,8 @@
              businessid as businessid,
                zkprice  as zkprice,
                xtypeid as xtypeid
+        timestamp as timestamp,
+        date as date
          from commodity
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -115,7 +119,9 @@
                     #{title},
                     #{businessid},
                     #{zkprice},
-                    #{xtypeid})
+                    #{xtypeid},
+                    now(),
+                    now())
     </insert>
 
     <update id="updateCommodity" parameterType="com.zb.pojo.Commodity">
