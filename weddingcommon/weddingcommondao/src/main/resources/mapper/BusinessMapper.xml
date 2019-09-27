@@ -5,20 +5,12 @@
 <mapper namespace="com.zb.mapper.BusinessMapper">
 
     <select id="getBusinessById" resultType="com.zb.pojo.Business">
-        select
-                id as id,
-                number as number,
-                password as password,
-                accout as accout,
-                fraction as fraction,
-                address as address,
-                state as state
-        from business
-        <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">
-                and id=#{id}
-            </if>
-        </trim>
+        select  * from business  where id=#{id}
+
+
+
+
+
     </select>
 
     <select id="getBusinessListByMap" resultType="com.zb.pojo.Business" parameterType="java.util.Map">
