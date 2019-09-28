@@ -6,7 +6,7 @@
 
 
     <select id="getje" resultType="com.zb.vo.JeVo">
-  SELECT SUM(price) AS sumje  FROM tmorder t,orderinfo  o WHERE t.`orderid`=o.id  AND t.`state`=#{state}
+  SELECT SUM(price) AS je  FROM tmorder t,orderinfo  o WHERE t.`orderid`=o.id  AND t.`state`=#{state}
     </select>
 
 
