@@ -47,14 +47,14 @@
                 price as price,
                 remrks as remrks,
                 freight as freight,
-             logisticsid as logisticsid
+               logisticsid as logisticsid
             from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
                     and id=#{id}
                 </if>
                 <if test="orderid != null and orderid!=''">
-                    and orderid=#{orderid}
+                    and orderid like concat ('%',#{orderid},'%')
                 </if>
                 <if test="address != null and address!=''">
                     and address=#{address}
@@ -90,13 +90,13 @@
     </select>
 
     <select id="getOrderinfoCountByMap" resultType="Integer"  parameterType="java.util.Map">
-        select count(*) from orderinfo
+        select count(1) from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
                     and id=#{id}
                 </if>
                 <if test="orderid != null and orderid!=''">
-                    and orderid=#{orderid}
+                    and orderid like concat ('%',#{orderid},'%')
                 </if>
                 <if test="address != null and address!=''">
                     and address=#{address}
