@@ -10,5 +10,9 @@
     </select>
 
 
+    <select id="getTuikuanje" resultType="com.zb.vo.JeVo">
+  SELECT SUM(price) AS je  FROM refund r,orderinfo  o WHERE r.`orderid`=o.id  AND r.`state`=#{state}
+    </select>
+
 
 </mapper>  
