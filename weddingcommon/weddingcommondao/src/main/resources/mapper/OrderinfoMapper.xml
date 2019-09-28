@@ -5,7 +5,7 @@
 <mapper namespace="com.zb.mapper.OrderinfoMapper">
 
     <sql id="where_sql">
-        <if test="orderid != null and orderid != -1">
+        <if test="orderid != null and orderid !='' ">
             where orderid = #{orderid}
         </if>
     </sql>
