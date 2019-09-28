@@ -5,7 +5,7 @@
 <mapper namespace="com.zb.mapper.OrderinfoMapper">
 
     <sql id="where_sql">
-        <if test="orderid != null and orderid != -1">
+        <if test="orderid != null and orderid !='' ">
             where orderid = #{orderid}
         </if>
     </sql>
@@ -25,11 +25,11 @@
                 datetime as datetime,
                 price as price,
                 remrks as remrks,
-                freight as freight
+                freight as freight,
         logisticsid as logisticsid
         from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
-            <if test="orderid != null">
+            <if test="orderid != null and orderid !=''">
                 and orderid=#{orderid}
             </if>
         </trim>
@@ -47,14 +47,14 @@
                 price as price,
                 remrks as remrks,
                 freight as freight,
-             logisticsid as logisticsid
+               logisticsid as logisticsid
             from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
                     and id=#{id}
                 </if>
                 <if test="orderid != null and orderid!=''">
-                    and orderid=#{orderid}
+                    and orderid like concat ('%',#{orderid},'%')
                 </if>
                 <if test="address != null and address!=''">
                     and address=#{address}
@@ -65,7 +65,7 @@
                 <if test="userid != null and userid!=''">
                     and userid=#{userid}
                 </if>
-                <if test="state != null and state!=''">
+                <if test="state != null and state!=0">
                     and state=#{state}
                 </if>
                 <if test="datetime != null and datetime!=''">
@@ -90,13 +90,13 @@
     </select>
 
     <select id="getOrderinfoCountByMap" resultType="Integer"  parameterType="java.util.Map">
-        select count(*) from orderinfo
+        select count(1) from orderinfo
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
                     and id=#{id}
                 </if>
                 <if test="orderid != null and orderid!=''">
-                    and orderid=#{orderid}
+                    and orderid like concat ('%',#{orderid},'%')
                 </if>
                 <if test="address != null and address!=''">
                     and address=#{address}
@@ -107,7 +107,7 @@
                 <if test="userid != null and userid!=''">
                     and userid=#{userid}
                 </if>
-                <if test="state != null and state!=''">
+                <if test="state != null and state!=0">
                     and state=#{state}
                 </if>
                 <if test="datetime != null and datetime!=''">
