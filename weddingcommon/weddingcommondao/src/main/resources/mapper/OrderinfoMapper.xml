@@ -65,7 +65,7 @@
                 <if test="userid != null and userid!=''">
                     and userid=#{userid}
                 </if>
-                <if test="state != null and state!=''">
+                <if test="state != null and state!=0">
                     and state=#{state}
                 </if>
                 <if test="datetime != null and datetime!=''">
@@ -107,7 +107,7 @@
                 <if test="userid != null and userid!=''">
                     and userid=#{userid}
                 </if>
-                <if test="state != null and state!=''">
+                <if test="state != null and state!=0">
                     and state=#{state}
                 </if>
                 <if test="datetime != null and datetime!=''">
