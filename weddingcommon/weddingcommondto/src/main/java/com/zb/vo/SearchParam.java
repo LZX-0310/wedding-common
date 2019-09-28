@@ -1,6 +1,8 @@
 package com.zb.vo;
 
-public class SearchParam {
+import java.io.Serializable;
+
+public class SearchParam implements Serializable {
     private String key;
     private Integer xtypeid;
     private Integer xtype;
