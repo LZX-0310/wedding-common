@@ -1,11 +1,31 @@
 package com.zb.vo;
 
-public class SearchParam {
+import java.io.Serializable;
+
+public class SearchParam implements Serializable {
     private String key;
     private Integer xtypeid;
     private Integer xtype;
     private Integer index;
     private Integer size;
+    private String price;
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public Integer getXtype() {
         return xtype;
