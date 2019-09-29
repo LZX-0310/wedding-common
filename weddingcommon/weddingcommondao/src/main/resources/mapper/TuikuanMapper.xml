@@ -6,20 +6,20 @@
 
     <sql id="where_page">
         <if test="orderid!=null and orderid!=''">
-            and orderid like concat ('%',#{orderid},'%')
+            and o.orderid like concat ('%',#{orderid},'%')
         </if>
     </sql>
 
     <select id="FindTuikuanAll" resultType="com.zb.vo.TuikuanVo">
         SELECT  r.id,r.`businessid`,r.`state`,r.`details`,r.`address`,r.`yuanyin`,o.`orderid`,u.uname,u.phone   FROM
-        refund r,orderinfo o , `user` u  WHERE r.`orderid`=o.id
+        refund r,orderinfo o , `user` u  WHERE r.`orderid`=o.id and r.userid=u.id
         <include refid="where_page"></include>
-        limit ${index},${size}
+       order by r.id  limit ${index},${size}
     </select>
 
     <select id="getTuikuanCount" resultType="int">
         SELECT count(1) FROM
-        refund r,orderinfo o , `user` u  WHERE r.`orderid`=o.id
+        refund r,orderinfo o , `user` u  WHERE r.`orderid`=o.id  and r.userid=u.id
         <include refid="where_page"></include>
     </select>
 

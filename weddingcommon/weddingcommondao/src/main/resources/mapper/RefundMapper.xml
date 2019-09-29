@@ -97,20 +97,20 @@
     <insert id="insertRefund" parameterType="com.zb.pojo.Refund">
         insert into refund(
                         id,
+                        businessid,
                         orderid,
                         state,
                         details,
                         address,
-                        businessid,
                         userid,
                         yuanyin)
         values(
                       null ,
+                     #{businessid},
                      #{orderid},
                      #{state},
-                     #{details},
+                     1,
                      #{address},
-                     #{businessid},
                     #{userid},
                      #{yuanyin})
     </insert>
