@@ -17,7 +17,7 @@
         <include refid="where_page"></include>
         limit ${index},${size}
     </select>
-    <select id="FindYysdlAll" resultType="int">
+    <select id="getYysdlCount" resultType="int">
         select count(1) from yysdl where
         <include refid="where_page"></include>
     </select>
