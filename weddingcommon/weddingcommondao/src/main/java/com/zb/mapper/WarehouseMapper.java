@@ -12,6 +12,7 @@ public interface WarehouseMapper {
 	public Warehouse getWarehouseById(@Param(value = "id") Integer id)throws Exception;
      //全部查
 	public List<Warehouse>	getWarehouseListByMap(Map<String,Object> map)throws Exception;
+
    //查次数
 	public Integer getWarehouseCountByMap(Map<String,Object> map)throws Exception;
     //添加

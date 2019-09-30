@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.PjVoMapper">
+
+
+
+    <sql id="where_page">
+        <if test="el!=null and el!=0">
+            and e.el=#{el}
+        </if>
+    </sql>
+
+    <select id="FindPjVoAll" resultType="com.zb.vo.PjVo">
+        SELECT e.id,e.`content`,e.`reply`,e.`etime`,e.`el`, o.`orderid`,c.`cname` FROM evaluate e,orderinfo o,commodity c
+        WHERE e.`orderid`=o.`id` AND e.`commodityid`=c.`id`
+        <include refid="where_page"></include>
+         order by e.id limit ${index},${size}
+    </select>
+
+    <select id="getPjVoCount" resultType="int">
+        SELECT count(1) FROM evaluate e,orderinfo o,commodity c
+        WHERE e.`orderid`=o.`id` AND e.`commodityid`=c.`id`
+        <include refid="where_page"></include>
+    </select>
+
+</mapper>  
