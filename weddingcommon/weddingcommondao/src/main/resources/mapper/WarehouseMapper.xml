@@ -147,4 +147,12 @@
     <select id="getXl" resultType="com.zb.vo.Xlvo">
   SELECT commodityid,SUM(sale) AS sumsale,c.`cname` AS cname  FROM warehouse w,`commodity` c WHERE w.`commodityid`=c.`id` GROUP BY  commodityid ORDER BY  SUM(sale) DESC
     </select>
+
+    <select id="getWarehouseSale" resultType="int">
+
+        select sum(sale) from warehouse where commodityid=#{id}
+    </select>
+    <select id="getWarehouesXystock" resultType="com.zb.pojo.Warehouse">
+        SELECT * FROM warehouse WHERE commodityid = #{id} ORDER BY  updatetime DESC LIMIT 1
+    </select>
 </mapper>
