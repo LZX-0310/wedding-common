@@ -29,4 +29,7 @@ public interface EvaluateMapper {
 
 	public Integer byOrderIdUpdate(Evaluate evaluate)throws Exception;
 
+	//查询商品评价数量
+	public Integer getCommodtiyCount(@Param("id") Integer id)throws Exception;
+
 }
