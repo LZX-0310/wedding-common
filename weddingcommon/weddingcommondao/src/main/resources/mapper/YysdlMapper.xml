@@ -27,6 +27,6 @@
 
     </select>
      <insert id="insertYysdl" parameterType="com.zb.pojo.Yysdl">
-         insert  into yysdl values(null,#{username},#{password},#{phone},#{name},#{sex},now())
+         insert  into yysdl values(null,#{username},#{password},#{phone},#{name},1,#{sex},now())
      </insert>
 </mapper>  
