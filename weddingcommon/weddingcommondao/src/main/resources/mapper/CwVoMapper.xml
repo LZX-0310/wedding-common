@@ -18,9 +18,18 @@
     </select>
 
     <select id="getCwVoCount" resultType="int">
-        SELECT count(1) FROM (SELECT * FROM warehouse ORDER BY updatetime DESC) AS w ,commodity c WHERE w.commodityid=c.id
+        SELECT COUNT(*) FROM
+        ( SELECT COUNT(*) FROM (SELECT * FROM warehouse ORDER BY updatetime DESC) AS w ,commodity c WHERE w.commodityid=c.id
         <include refid="where_page"></include>
-        GROUP BY commodityid
+        GROUP BY c.id ) AS w
     </select>
 
+    <select id="getCwVoByCommodity" resultType="com.zb.vo.CwVo">
+         SELECT w.*,c.cname FROM  warehouse w,commodity c  WHERE  w.commodityid=c.`id` AND  w.commodityid=#{commodityid}
+          ORDER BY  w.updatetime DESC   limit ${index},${size}
+    </select>
+    
+    <select id="getCwVoCommodityCount" resultType="int">
+         SELECT count(1) FROM  warehouse  WHERE commodityid=#{commodityid}
+    </select>
 </mapper>  

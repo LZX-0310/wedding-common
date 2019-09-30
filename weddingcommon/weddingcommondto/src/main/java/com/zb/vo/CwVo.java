@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class CwVo implements Serializable {
     private  Integer id;
-    private  Integer commodity;//商品id
+    private  Integer commodityid;//商品id
     private  Integer stock;//初始库存
     private  Integer price ;//进货价
     private  Integer sale;//销售量
@@ -22,12 +22,12 @@ public class CwVo implements Serializable {
         this.id = id;
     }
 
-    public Integer getCommodity() {
-        return commodity;
+    public Integer getCommodityid() {
+        return commodityid;
     }
 
-    public void setCommodity(Integer commodity) {
-        this.commodity = commodity;
+    public void setCommodityid(Integer commodityid) {
+        this.commodityid = commodityid;
     }
 
     public Integer getStock() {
