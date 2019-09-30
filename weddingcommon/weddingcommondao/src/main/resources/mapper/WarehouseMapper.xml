@@ -152,4 +152,7 @@
 
         select sum(sale) from warehouse where commodityid=#{id}
     </select>
+    <select id="getWarehouesXystock" resultType="com.zb.pojo.Warehouse">
+        SELECT * FROM warehouse WHERE commodityid = #{id} ORDER BY  updatetime DESC LIMIT 1
+    </select>
 </mapper>
