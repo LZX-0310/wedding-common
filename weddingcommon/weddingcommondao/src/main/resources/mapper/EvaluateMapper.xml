@@ -137,4 +137,7 @@
     <update id="byOrderIdUpdate" parameterType="com.zb.pojo.Evaluate">
         update evaluate set reply=#{reply} where orderid = #{orderid}
     </update>
+    <select id="getCommodtiyCount" parameterType="int">
+        SELECT COUNT(*) FROM evaluate WHERE commodityid = #{id}
+    </select>
 </mapper>
