@@ -23,4 +23,7 @@ public interface WarehouseMapper {
 
     //查销量
 	public List<Xlvo>getXl()throws Exception;
+
+	//查询单个商品的销量
+	public Integer getWarehouseSale(@Param(value = "id") Integer id);
 }
