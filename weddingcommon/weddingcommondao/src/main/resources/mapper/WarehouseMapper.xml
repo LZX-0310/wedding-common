@@ -149,6 +149,7 @@
     </select>
 
     <select id="getWarehouseSale" resultType="int">
+
         select sum(*) from warehouse where commodityid=#{id}
     </select>
 </mapper>
