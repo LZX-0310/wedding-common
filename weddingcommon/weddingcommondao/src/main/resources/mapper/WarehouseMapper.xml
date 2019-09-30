@@ -147,4 +147,8 @@
     <select id="getXl" resultType="com.zb.vo.Xlvo">
   SELECT commodityid,SUM(sale) AS sumsale,c.`cname` AS cname  FROM warehouse w,`commodity` c WHERE w.`commodityid`=c.`id` GROUP BY  commodityid ORDER BY  SUM(sale) DESC
     </select>
+
+    <select id="getWarehouseSale" resultType="int">
+        select sum(*) from warehouse where commodityid=#{id}
+    </select>
 </mapper>
