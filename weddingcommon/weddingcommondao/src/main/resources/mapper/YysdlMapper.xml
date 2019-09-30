@@ -4,7 +4,7 @@
 
     <sql id="where_page">
         <if test="name!=null and name!=''">
-            and name like concat ('%',#{name},'%')
+            where name like concat ('%',#{name},'%')
         </if>
 
     </sql>
@@ -13,12 +13,12 @@
     </select>
 
     <select id="FindYysdlAll" resultType="com.zb.pojo.Yysdl">
-        select * from yysdl where
+        select * from yysdl
         <include refid="where_page"></include>
         limit ${index},${size}
     </select>
     <select id="getYysdlCount" resultType="int">
-        select count(1) from yysdl where
+        select count(1) from yysdl
         <include refid="where_page"></include>
     </select>
 
@@ -26,5 +26,7 @@
         select * from yysdl where username=#{username}
 
     </select>
-
+     <insert id="insertYysdl" parameterType="com.zb.pojo.Yysdl">
+         insert  into yysdl values(null,#{username},#{password},#{phone},#{name},#{sex},now())
+     </insert>
 </mapper>  

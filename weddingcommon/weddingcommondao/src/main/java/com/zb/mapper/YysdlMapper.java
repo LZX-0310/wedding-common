@@ -20,4 +20,8 @@ public interface YysdlMapper {
     //根据账户名唯一查
     public  Yysdl getYysdlgetusername(@Param("username")String username)throws Exception;
 
+
+    //管理员添加
+    public int insertYysdl(Yysdl yysdl)throws Exception;
+
 }
