@@ -27,4 +27,7 @@ public interface WarehouseMapper {
 
 	//查询单个商品的销量
 	public Integer getWarehouseSale(@Param(value = "id") Integer id) throws Exception;
+
+	//获取库存量
+	public Warehouse getWarehouesXystock(@Param(value = "id")Integer id)throws Exception;
 }
