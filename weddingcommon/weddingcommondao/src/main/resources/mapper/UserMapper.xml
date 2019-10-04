@@ -190,5 +190,7 @@
     <select id="getUserByPhone" resultType="com.zb.pojo.User">
     select * from `user` u where u.`phone`=#{phone}
 </select>
-
+    <select id="getUserByNumber" resultType="com.zb.pojo.User">
+    select*from `user` u where u.`number`=#{number}
+    </select>
 </mapper>
