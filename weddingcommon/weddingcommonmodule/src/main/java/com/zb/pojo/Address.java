@@ -15,7 +15,18 @@ public class Address implements Serializable {
     private String phone;
     //邮编
     private Integer post;
+    //用户id
+    private Integer userid;
     //get set 方法
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
     public void setId (Integer  id){
         this.id=id;
     }
