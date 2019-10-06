@@ -82,6 +82,7 @@
 
     <insert id="insertTmorder" parameterType="com.zb.pojo.Tmorder">
         insert into tmorder(
+                        id,
                         tmorderid,
                         num,
                         orderid,
@@ -90,13 +91,14 @@
                         model,
                         time)
         values(
+                    null,
                      #{tmorderid},
                      #{num},
                      #{orderid},
-                     #{state},
+                     1,
                      #{commodityid},
                      #{model},
-                    #{time})
+                    now())
     </insert>
 
     <update id="updateTmorder" parameterType="com.zb.pojo.Tmorder">
