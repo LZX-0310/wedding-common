@@ -129,4 +129,7 @@
                         </if>
         </trim>
     </update>
+    <select id="byIdGetTmorder" resultType="com.zb.pojo.Tmorder">
+        select * from tmorder where tmorderid=#(tmorderid)
+    </select>
 </mapper>
