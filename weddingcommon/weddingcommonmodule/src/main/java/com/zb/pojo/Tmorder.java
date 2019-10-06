@@ -21,7 +21,18 @@ public class Tmorder implements Serializable {
     private String model;
     //下单时间
     private Date time;
+    //用户Id
+    private Integer userid;
     //get set 方法
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
     public void setId (Integer  id){
         this.id=id;
     }
