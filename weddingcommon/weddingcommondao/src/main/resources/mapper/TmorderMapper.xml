@@ -89,7 +89,8 @@
                         state,
                         commodityid,
                         model,
-                        time)
+                        time,
+                        userid)
         values(
                     null,
                      #{tmorderid},
@@ -98,7 +99,8 @@
                      1,
                      #{commodityid},
                      #{model},
-                    now())
+                    now(),
+                    #{userid})
     </insert>
 
     <update id="updateTmorder" parameterType="com.zb.pojo.Tmorder">
