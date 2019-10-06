@@ -20,4 +20,7 @@ public interface TmorderMapper {
 
 	public Integer batchDeleteTmorder(Map<String,List<String>> params);
 
+	//根据订单编号获取订单信息
+	public Tmorder byIdGetTmorder(@Param("tmorderid")String tmorderid)throws Exception;
+
 }
