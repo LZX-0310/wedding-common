@@ -18,11 +18,7 @@
                 sex as sex,
                 date as date
         from user
-        <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">
-                and id=#{id}
-            </if>
-        </trim>
+       where id=#{id};
     </select>
 
     <select id="getUserListByMap" resultType="com.zb.pojo.User" parameterType="java.util.Map">
