@@ -132,4 +132,7 @@
     <select id="byIdGetTmorder" resultType="com.zb.pojo.Tmorder">
         select * from tmorder where tmorderid=#{tmorderid}
     </select>
+    <update id="updateOrderId">
+        update tmorder set   orderid=#{orderid}  where     tmorderid=#{tmorderid}
+    </update>
 </mapper>
