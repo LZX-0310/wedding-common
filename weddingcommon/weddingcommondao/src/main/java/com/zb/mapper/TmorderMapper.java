@@ -23,4 +23,7 @@ public interface TmorderMapper {
 	//根据订单编号获取订单信息
 	public Tmorder byIdGetTmorder(@Param("tmorderid")String tmorderid)throws Exception;
 
+	//修改临时订单编号
+	public Integer updateOrderId(Tmorder tmorder)throws Exception;
+
 }
