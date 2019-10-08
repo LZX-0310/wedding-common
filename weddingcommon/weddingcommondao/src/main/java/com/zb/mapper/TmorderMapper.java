@@ -26,4 +26,7 @@ public interface TmorderMapper {
 	//修改临时订单编号
 	public Integer updateOrderId(Tmorder tmorder)throws Exception;
 
+	//修改订单成已支付
+	public Integer updateState(@Param("state")String tmorderid)throws Exception;
+
 }
