@@ -32,4 +32,7 @@ public interface TmorderMapper {
 	//根据用户id查询
 	public List<Tmorder> byIdGetList(@Param("id")Integer id)throws  Exception;
 
+	//删除临时订单
+	public Integer delTmorder(@Param("id")Integer id)throws Exception;
+
 }
