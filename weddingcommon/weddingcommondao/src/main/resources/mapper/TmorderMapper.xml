@@ -8,7 +8,7 @@
         select * from tmorder where orderid= #{orderid}
     </select>
     <select id="byIdGetList" resultType="com.zb.pojo.Tmorder">
-        select * from tmorder where userid=#{id}
+        select * from tmorder where userid=#{id} and state = 1
     </select>
 
     <select id="getTmorderListByMap" resultType="com.zb.pojo.Tmorder" parameterType="java.util.Map">
