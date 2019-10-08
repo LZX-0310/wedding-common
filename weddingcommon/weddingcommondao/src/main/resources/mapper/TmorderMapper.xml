@@ -10,6 +10,9 @@
     <select id="byIdGetList" resultType="com.zb.pojo.Tmorder">
         select * from tmorder where userid=#{id} and state = 1
     </select>
+    <delete id="delTmorder" parameterType="com.zb.pojo.Tmorder">
+        delete  from tmorder where id=#{id}
+    </delete>
 
     <select id="getTmorderListByMap" resultType="com.zb.pojo.Tmorder" parameterType="java.util.Map">
         select
