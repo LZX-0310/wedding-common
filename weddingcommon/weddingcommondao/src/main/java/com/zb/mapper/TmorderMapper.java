@@ -29,4 +29,7 @@ public interface TmorderMapper {
 	//修改订单成已支付
 	public Integer updateState(@Param("orderid")String orderid)throws Exception;
 
+	//根据用户id查询
+	public List<Tmorder> byIdGetList(@Param("id")Integer id)throws  Exception;
+
 }
