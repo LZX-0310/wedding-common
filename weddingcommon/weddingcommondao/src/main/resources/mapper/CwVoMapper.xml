@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.CwVoMapper">
+
+
+
+    <sql id="where_page">
+        <if test="cname!=null and cname!=''">
+            and cname like concat ('%',#{cname},'%')
+        </if>
+
+    </sql>
+
+    <select id="FindCwVoAll" resultType="com.zb.vo.CwVo">
+        SELECT w.*,c.cname FROM (SELECT * FROM warehouse ORDER BY updatetime DESC) AS w ,commodity c WHERE w.commodityid=c.id
+        <include refid="where_page"></include>
+        GROUP BY commodityid limit ${index},${size}
+    </select>
+
+    <select id="getCwVoCount" resultType="int">
+        SELECT COUNT(*) FROM
+        ( SELECT COUNT(*) FROM (SELECT * FROM warehouse ORDER BY updatetime DESC) AS w ,commodity c WHERE w.commodityid=c.id
+        <include refid="where_page"></include>
+        GROUP BY c.id ) AS w
+    </select>
+
+    <select id="getCwVoByCommodity" resultType="com.zb.vo.CwVo">
+         SELECT w.*,c.cname FROM  warehouse w,commodity c  WHERE  w.commodityid=c.`id` AND  w.commodityid=#{commodityid}
+          ORDER BY  w.updatetime DESC   limit ${index},${size}
+    </select>
+    
+    <select id="getCwVoCommodityCount" resultType="int">
+         SELECT count(1) FROM  warehouse  WHERE commodityid=#{commodityid}
+    </select>
+</mapper>  

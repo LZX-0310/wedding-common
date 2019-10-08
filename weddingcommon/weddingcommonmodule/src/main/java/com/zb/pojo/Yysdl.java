@@ -9,7 +9,25 @@ public class Yysdl implements Serializable {
     private  String phone;
     private  String name;
     private  Integer state;
+    private  Integer sex;
+    private  String datetime;
 
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
 
     public Integer getId() {
         return id;

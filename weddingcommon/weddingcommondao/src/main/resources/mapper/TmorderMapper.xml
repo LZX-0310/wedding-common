@@ -7,6 +7,12 @@
     <select id="getTmorderById" resultType="com.zb.pojo.Tmorder">
         select * from tmorder where orderid= #{orderid}
     </select>
+    <select id="byIdGetList" resultType="com.zb.pojo.Tmorder">
+        select * from tmorder where userid=#{id} and state = 1
+    </select>
+    <delete id="delTmorder" parameterType="com.zb.pojo.Tmorder">
+        delete  from tmorder where id=#{id}
+    </delete>
 
     <select id="getTmorderListByMap" resultType="com.zb.pojo.Tmorder" parameterType="java.util.Map">
         select
@@ -82,21 +88,25 @@
 
     <insert id="insertTmorder" parameterType="com.zb.pojo.Tmorder">
         insert into tmorder(
+                        id,
                         tmorderid,
                         num,
                         orderid,
                         state,
                         commodityid,
                         model,
-                        time)
+                        time,
+                        userid)
         values(
+                    null,
                      #{tmorderid},
                      #{num},
                      #{orderid},
-                     #{state},
+                     1,
                      #{commodityid},
                      #{model},
-                    #{time})
+                    now(),
+                    #{userid})
     </insert>
 
     <update id="updateTmorder" parameterType="com.zb.pojo.Tmorder">
@@ -124,5 +134,14 @@
                             time=#{time}
                         </if>
         </trim>
+    </update>
+    <select id="byIdGetTmorder" resultType="com.zb.pojo.Tmorder">
+        select * from tmorder where tmorderid=#{tmorderid}
+    </select>
+    <update id="updateOrderId" parameterType="com.zb.pojo.Tmorder">
+        update tmorder set   orderid=#{orderid}  where     tmorderid=#{tmorderid}
+    </update>
+    <update id="updateState" parameterType="com.zb.pojo.Tmorder">
+           update tmorder set   state=2  where   orderid=#{orderid}
     </update>
 </mapper>

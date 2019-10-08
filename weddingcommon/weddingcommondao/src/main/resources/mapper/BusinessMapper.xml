@@ -12,7 +12,8 @@
                 accout as accout,
                 fraction as fraction,
                 address as address,
-                state as state
+                state as state,
+                datetime as datetime
         from business
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -29,7 +30,8 @@
                 accout as accout,
                 fraction as fraction,
                 address as address,
-                 state as state
+                 state as state,
+                datetime as datetime
         from business
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -42,7 +44,7 @@
                     and password=#{password}
                 </if>
                 <if test="accout != null and accout!=''">
-                    and accout=#{accout}
+                    and accout like concat ('%',#{accout},'%')
                 </if>
                 <if test="fraction != null and fraction!=''">
                     and fraction=#{fraction}
@@ -52,6 +54,9 @@
                 </if>
             <if test="state != null and state!=''">
                 and state=#{state}
+            </if>
+            <if test="datetime != null and datetime!=''">
+                and datetime=#{datetime}
             </if>
         </trim>
         <if test="index != null and size != null ">
@@ -71,9 +76,9 @@
                 <if test="password != null and password!=''">
                     and password=#{password}
                 </if>
-                <if test="accout != null and accout!=''">
-                    and accout=#{accout}
-                </if>
+            <if test="accout != null and accout!=''">
+                and accout like concat ('%',#{accout},'%')
+            </if>
                 <if test="fraction != null and fraction!=''">
                     and fraction=#{fraction}
                 </if>
@@ -82,6 +87,9 @@
                 </if>
             <if test="state != null and state!=''">
                 and state=#{state}
+            </if>
+            <if test="datetime != null and datetime!=''">
+                and datetime=#{datetime}
             </if>
         </trim>
     </select>
@@ -94,7 +102,8 @@
                         accout,
                         fraction,
                         address,
-                        state)
+                        state,
+                        datetime)
         values(
                        null ,
                      #{number},
@@ -102,7 +111,8 @@
                      #{accout},
                      12,
                     #{address},
-                     2)
+                     2,
+                     now())
     </insert>
 
     <update id="updateBusiness" parameterType="com.zb.pojo.Business">
@@ -118,11 +128,12 @@
                             accout=#{accout},
                         </if>
                         <if test="address != null and address!=''">
-                            address=#{address}
+                            address=#{address},
                         </if>
                       <if test="state != null and state!=''">
                             state=#{state}
                          </if>
+
         </trim>
     </update>
 
@@ -134,5 +145,18 @@
             </if>
         </trim>
     </update>
+
+    <select id="loginBusiness" resultType="com.zb.pojo.Business" >
+        select*from `Business` u where  u.`number`=#{number}  and u.`password`=#{password}
+</select>
+
+   <select id="getBusinessBynumber" resultType="com.zb.pojo.Business">
+       select*from `Business` u where u.`number`=#{number}
+</select>
+
+   <delete id="deleteBusiness" parameterType="int">
+       delete from business where id=#{id}
+   </delete>
+
 
 </mapper>

@@ -10,7 +10,7 @@ public class Orderinfo implements Serializable {
 	//订单编号
 	private String orderid;
 	//收货地址
-	private String address;
+	private Integer address;
 	//手机号
 	private String phone;
 	//用户id
@@ -44,11 +44,11 @@ public class Orderinfo implements Serializable {
 		this.orderid = orderid;
 	}
 
-	public String getAddress() {
+	public Integer getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Integer address) {
 		this.address = address;
 	}
 

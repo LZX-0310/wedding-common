@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zb.mapper.AddressMapper">
 
+    <select id="byIdGetListAddress" resultType="com.zb.pojo.Address">
+        SELECT * FROM ADDRESS where userid=#{id}
+    </select>
+
     <select id="getAddressById" resultType="com.zb.pojo.Address">
         select
-                id as id,
-                name as name,
-                address as address,
-                phone as phone,
-                post as post
+               *
         from address
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -25,7 +25,8 @@
                 name as name,
                 address as address,
                 phone as phone,
-                post as post
+                post as post,
+        userid as userid
         from address
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -42,6 +43,9 @@
                 </if>
                 <if test="post != null and post!=''">
                     and post=#{post}
+                </if>
+                <if test="userid != null and userid!=''">
+                    and userid=#{userid}
                 </if>
         </trim>
         <if test="beginPos != null and pageSize != null ">
@@ -67,6 +71,9 @@
                 <if test="post != null and post!=''">
                     and post=#{post}
                 </if>
+                <if test="userid != null and userid!=''">
+                    and userid=#{userid}
+                </if>
         </trim>
     </select>
 
@@ -76,13 +83,15 @@
                         name,
                         address,
                         phone,
-                        post)
+                        post,
+                        userid)
         values(
                       null,
                      #{name},
                      #{address},
                      #{phone},
-                    #{post})
+                    #{post},
+                    #{userid})
     </insert>
 
     <update id="updateAddress" parameterType="com.zb.pojo.Address">
@@ -99,6 +108,9 @@
                         </if>
                         <if test="post != null and post!=''">
                             post=#{post}
+                        </if>
+                        <if test="userid != null and userid!=''">
+                            userid=#{userid}
                         </if>
         </trim>
     </update>

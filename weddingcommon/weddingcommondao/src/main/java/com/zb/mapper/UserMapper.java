@@ -26,4 +26,6 @@ public interface UserMapper {
 
 	public User getUserByPhone(@Param(value = "phone") String phone)throws Exception;
 
+	public User getUserByNumber(@Param(value = "number")String number)throws Exception;
+
 }

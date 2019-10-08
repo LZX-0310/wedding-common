@@ -19,7 +19,22 @@ public class Refund implements Serializable {
     private Integer businessid;
     //引用用户id
     private Integer userid;
+    //操作原因
+    private  String yuanyin;
+
+
+
     //get set 方法
+
+
+    public String getYuanyin() {
+        return yuanyin;
+    }
+
+    public void setYuanyin(String yuanyin) {
+        this.yuanyin = yuanyin;
+    }
+
     public void setId (Integer  id){
         this.id=id;
     }

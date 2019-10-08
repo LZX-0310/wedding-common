@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface OrderinfoMapper {
     //唯一查
-	public Orderinfo getOrderinfoById(@Param(value = "orderid") Integer orderid)throws Exception;
+	public Orderinfo getOrderinfoById(@Param(value = "orderid") String orderid)throws Exception;
 
 	//全部查
 	public List<Orderinfo>	getOrderinfoListByMap(Map<String,Object> param)throws Exception;
@@ -28,5 +28,7 @@ public interface OrderinfoMapper {
 	public Integer updateLogisticsid(Orderinfo orderinfo)throws Exception;
 
 	public Integer updateAddress(Orderinfo orderinfo)throws Exception;
+
+	public Orderinfo getOrderById(@Param("orderid")String orderid)throws Exception;
 
 }

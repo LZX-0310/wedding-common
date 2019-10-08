@@ -12,7 +12,7 @@ public class Tmorder implements Serializable {
     //商品数量
     private Integer num;
     //引用订单id表(如果是已付款必须有订单编号)
-    private Integer orderid;
+    private String orderid;
     //1未付款2已付款
     private Integer state;
     //引用商品id
@@ -21,7 +21,18 @@ public class Tmorder implements Serializable {
     private String model;
     //下单时间
     private Date time;
+    //用户Id
+    private Integer userid;
     //get set 方法
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
     public void setId (Integer  id){
         this.id=id;
     }
@@ -40,10 +51,10 @@ public class Tmorder implements Serializable {
     public  Integer getNum(){
         return this.num;
     }
-    public void setOrderid (Integer  orderid){
+    public void setOrderid (String  orderid){
         this.orderid=orderid;
     }
-    public  Integer getOrderid(){
+    public  String getOrderid(){
         return this.orderid;
     }
     public void setState (Integer  state){

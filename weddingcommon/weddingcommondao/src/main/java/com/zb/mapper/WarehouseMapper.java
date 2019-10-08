@@ -1,5 +1,6 @@
 package com.zb.mapper;
 import com.zb.pojo.Warehouse;
+import com.zb.vo.Xlvo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ public interface WarehouseMapper {
 	public Warehouse getWarehouseById(@Param(value = "id") Integer id)throws Exception;
      //全部查
 	public List<Warehouse>	getWarehouseListByMap(Map<String,Object> map)throws Exception;
+
    //查次数
 	public Integer getWarehouseCountByMap(Map<String,Object> map)throws Exception;
     //添加
@@ -20,5 +22,12 @@ public interface WarehouseMapper {
 
 	public Integer deleteWarehouseById(@Param(value = "id") Integer id)throws Exception;
 
+    //查销量
+	public List<Xlvo>getXl()throws Exception;
 
+	//查询单个商品的销量
+	public Integer getWarehouseSale(@Param(value = "id") Integer id) throws Exception;
+
+	//获取库存量
+	public Warehouse getWarehouesXystock(@Param(value = "id")Integer id)throws Exception;
 }

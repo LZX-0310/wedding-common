@@ -12,7 +12,8 @@
                 details as details,
                 address as address,
                 businessid as businessid,
-                userid as userid
+                userid as userid,
+                yuanyin as yuanyin
         from refund
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">
@@ -29,7 +30,8 @@
                 details as details,
                 address as address,
                 businessid as businessid,
-                userid as userid
+                userid as userid,
+               yuanyin as yuanyin
         from refund
         <trim prefix="where" prefixOverrides="and | or">
                 <if test="id != null and id!=''">
@@ -53,6 +55,9 @@
                 <if test="userid != null and userid!=''">
                     and userid=#{userid}
                 </if>
+            <if test="yuanyin != null and yuanyin!=''">
+                and yuanyin=#{yuanyin}
+            </if>
         </trim>
         <if test="index != null and size != null ">
             limit ${index},${size }
@@ -83,26 +88,31 @@
                 <if test="userid != null and userid!=''">
                     and userid=#{userid}
                 </if>
+            <if test="yuanyin != null and yuanyin!=''">
+                and yuanyin=#{yuanyin}
+            </if>
         </trim>
     </select>
 
     <insert id="insertRefund" parameterType="com.zb.pojo.Refund">
         insert into refund(
                         id,
+                        businessid,
                         orderid,
                         state,
                         details,
                         address,
-                        businessid,
-                        userid)
+                        userid,
+                        yuanyin)
         values(
                       null ,
+                     #{businessid},
                      #{orderid},
                      #{state},
-                     #{details},
+                     1,
                      #{address},
-                     #{businessid},
-                    #{userid})
+                    #{userid},
+                     #{yuanyin})
     </insert>
 
     <update id="updateRefund" parameterType="com.zb.pojo.Refund">
@@ -126,6 +136,9 @@
                         <if test="userid != null and userid!=''">
                             userid=#{userid}
                         </if>
+                       <if test="yuanyin != null and yuanyin!=''">
+                           yuanyin=#{yuanyin}
+                       </if>
         </trim>
     </update>
 </mapper>

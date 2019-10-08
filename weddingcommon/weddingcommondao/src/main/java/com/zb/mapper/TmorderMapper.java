@@ -20,4 +20,19 @@ public interface TmorderMapper {
 
 	public Integer batchDeleteTmorder(Map<String,List<String>> params);
 
+	//根据订单编号获取订单信息
+	public Tmorder byIdGetTmorder(@Param("tmorderid")String tmorderid)throws Exception;
+
+	//修改临时订单编号
+	public Integer updateOrderId(Tmorder tmorder)throws Exception;
+
+	//修改订单成已支付
+	public Integer updateState(@Param("orderid")String orderid)throws Exception;
+
+	//根据用户id查询
+	public List<Tmorder> byIdGetList(@Param("id")Integer id)throws  Exception;
+
+	//删除临时订单
+	public Integer delTmorder(@Param("id")Integer id)throws Exception;
+
 }

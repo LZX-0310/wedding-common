@@ -18,11 +18,7 @@
                 sex as sex,
                 date as date
         from user
-        <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">
-                and id=#{id}
-            </if>
-        </trim>
+       where id=#{id};
     </select>
 
     <select id="getUserListByMap" resultType="com.zb.pojo.User" parameterType="java.util.Map">
@@ -119,20 +115,34 @@
     </select>
 
     <insert id="insertUser" parameterType="com.zb.pojo.User">
-        insert into user values(
-                      null,
-                      null,
-                      null,
-                      0,
-                      null,
+        insert into user(
+                        id,
+                        uname,
+                        address,
+                        integral,
+                        birthday,
+                        phone,
+                        number,
+                        password,
+                        accout,
+                        sex,
+                        date,
+                        state)
+        values(
+                       null,
+                     #{uname},
+                     #{address},
+                     0,
+                     #{birthday},
                      #{phone},
                      #{number},
                      #{password},
                      #{accout},
-                     2,
-                    NOW(),
+                     #{sex},
+                    now(),
                     1)
     </insert>
+
     <update id="updateUser" parameterType="com.zb.pojo.User">
         update user
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
@@ -175,9 +185,6 @@
 
     <select id="getUserByPhone" resultType="com.zb.pojo.User">
     select*from `user` u where u.`phone`=#{phone}
-    </select>
+</select>
 
-    <select id="getUserByNumber" resultType="com.zb.pojo.User">
-    select*from `user` u where u.`number`=#{number}
-    </select>
 </mapper>

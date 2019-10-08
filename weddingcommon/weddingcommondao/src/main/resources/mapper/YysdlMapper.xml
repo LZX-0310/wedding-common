@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zb.mapper.YysdlMapper">
+
+    <sql id="where_page">
+        <if test="name!=null and name!=''">
+            where name like concat ('%',#{name},'%')
+        </if>
+
+    </sql>
     <select id="getloginYysdl" resultType="com.zb.pojo.Yysdl">
         SELECT *  FROM yysdl where username=#{username} and password=#{password}
     </select>
+
+    <select id="FindYysdlAll" resultType="com.zb.pojo.Yysdl">
+        select * from yysdl
+        <include refid="where_page"></include>
+        limit ${index},${size}
+    </select>
+    <select id="getYysdlCount" resultType="int">
+        select count(1) from yysdl
+        <include refid="where_page"></include>
+    </select>
+
+    <select id="getYysdlgetusername" resultType="com.zb.pojo.Yysdl">
+        select * from yysdl where username=#{username}
+
+    </select>
+     <insert id="insertYysdl" parameterType="com.zb.pojo.Yysdl">
+         insert  into yysdl values(null,#{username},#{password},#{phone},#{name},1,#{sex},now())
+     </insert>
 </mapper>  
