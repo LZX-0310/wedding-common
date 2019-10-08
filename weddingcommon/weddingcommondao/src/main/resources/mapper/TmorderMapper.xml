@@ -135,4 +135,7 @@
     <update id="updateOrderId" parameterType="com.zb.pojo.Tmorder">
         update tmorder set   orderid=#{orderid}  where     tmorderid=#{tmorderid}
     </update>
+    <update id="updateState" parameterType="com.zb.pojo.Tmorder">
+           update tmorder set   state=2 where     orderid=#{state}
+    </update>
 </mapper>
